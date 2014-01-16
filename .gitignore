@@ -87,3 +87,4 @@
 #idea
 .idea/
 *.iml
+out/
