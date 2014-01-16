@@ -1,4 +1,7 @@
 package ups.pastog
+
+
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -9,7 +12,7 @@ class DomainController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Domain.list(params), model: [domainInstanceCount: Domain.count()]
+        respond Domain.list(params), model:[domainInstanceCount: Domain.count()]
     }
 
     def show(Domain domainInstance) {
@@ -28,11 +31,11 @@ class DomainController {
         }
 
         if (domainInstance.hasErrors()) {
-            respond domainInstance.errors, view: 'create'
+            respond domainInstance.errors, view:'create'
             return
         }
 
-        domainInstance.save flush: true
+        domainInstance.save flush:true
 
         request.withFormat {
             form {
@@ -55,18 +58,18 @@ class DomainController {
         }
 
         if (domainInstance.hasErrors()) {
-            respond domainInstance.errors, view: 'edit'
+            respond domainInstance.errors, view:'edit'
             return
         }
 
-        domainInstance.save flush: true
+        domainInstance.save flush:true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Domain.label', default: 'Domain'), domainInstance.id])
                 redirect domainInstance
             }
-            '*' { respond domainInstance, [status: OK] }
+            '*'{ respond domainInstance, [status: OK] }
         }
     }
 
@@ -78,14 +81,14 @@ class DomainController {
             return
         }
 
-        domainInstance.delete flush: true
+        domainInstance.delete flush:true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Domain.label', default: 'Domain'), domainInstance.id])
-                redirect action: "index", method: "GET"
+                redirect action:"index", method:"GET"
             }
-            '*' { render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -95,7 +98,7 @@ class DomainController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'domainInstance.label', default: 'Domain'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*' { render status: NOT_FOUND }
+            '*'{ render status: NOT_FOUND }
         }
     }
 }

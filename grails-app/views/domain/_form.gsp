@@ -1,4 +1,4 @@
-
+<%@ page import="ups.pastog.Domain" %>
 
 
 
@@ -15,7 +15,7 @@
 		<g:message code="domain.autor.label" default="Autor" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="autor" name="autor.id" from="${User.list()}" optionKey="id" required="" value="${domainInstance?.autor?.id}" class="many-to-one"/>
+	<g:select id="autor" name="autor.id" from="${ups.pastog.User.list()}" optionKey="id" required="" value="${domainInstance?.autor?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'description', 'error')} ">
@@ -31,6 +31,6 @@
 		<g:message code="domain.subDomain.label" default="Sub Domain" />
 		
 	</label>
-	<g:select name="subDomain" from="${SubDomain.list()}" multiple="multiple" optionKey="id" size="5" value="${domainInstance?.subDomain*.id}" class="many-to-many"/>
+	<g:select name="subDomain" from="${ups.pastog.SubDomain.list()}" multiple="multiple" optionKey="id" size="5" value="${domainInstance?.subDomain*.id}" class="many-to-many"/>
 </div>
 

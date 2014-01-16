@@ -1,5 +1,5 @@
 
-
+<%@ page import="ups.pastog.Domain" %>
 <!DOCTYPE html>
 <html>
 	<head>
