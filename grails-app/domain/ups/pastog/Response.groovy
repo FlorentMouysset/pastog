@@ -1,3 +1,4 @@
+package ups.pastog
 class Response {
 	
 	Question question

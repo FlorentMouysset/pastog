@@ -1,3 +1,4 @@
+package ups.pastog
 import grails.test.mixin.*
 import spock.lang.*
 

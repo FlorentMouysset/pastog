@@ -1,3 +1,4 @@
+package ups.pastog
 class Domain {
 	
 	String title

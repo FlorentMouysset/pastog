@@ -1,3 +1,4 @@
+package ups.pastog
 class Question {
 	String enunciated
 	User user
