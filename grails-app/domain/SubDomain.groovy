@@ -1,4 +1,5 @@
 class SubDomain {
+
 	User user
 	static belongsTo = Domain
 
