@@ -42,6 +42,17 @@
 </div>
   </td>
   </tr>
+   <tr>
+  <td>
+  <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'Confirmation passWord', 'error')} required">
+	<label for="Confirmation passWord">
+		<g:message code="user.passWord.label" default="Confirmation PassWord" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field type="password" name="passWord" required="" />
+</div>
+  </td>
+  </tr>
 </table>
 
 
