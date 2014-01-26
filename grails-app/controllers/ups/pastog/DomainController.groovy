@@ -1,6 +1,6 @@
 package ups.pastog
 
-
+import sun.rmi.runtime.Log
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -19,8 +19,16 @@ class DomainController {
         respond domainInstance
     }
 
-    def create() {
-        respond new Domain(params)
+    def create(Long id) {
+        /*respond new Domain(params)*/
+        User userAdmin = User.findByName("admin")
+        /*Voir si l'utilisateur est un administrateur*/
+         def userInstance = User.get(id)
+         if(userInstance.name.equals( userAdmin.name ) == 0 )
+            Domain domain = new Domain(title: "title", description: "description", author: userInstance)
+
+        else 
+        respond domain
     }
 
     @Transactional
