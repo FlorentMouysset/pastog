@@ -69,7 +69,29 @@ grails.project.dependency.resolution = {
         //runtime ":cached-resources:1.1"
         //runtime ":yui-minify-resources:0.1.5"
 		compile ':cache:1.1.1'
-		
+		compile ":codenarc:0.19"
 		compile ":spring-security-core:1.2.7.3"
     }
+}
+codenarc.properties = {
+	// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
+	GrailsPublicControllerMethod.enabled = false
+
+}
+
+codenarc.reports = {
+	// Each report definition is of the form:
+	//    REPORT-NAME(REPORT-TYPE) {
+	//        PROPERTY-NAME = PROPERTY-VALUE
+	//        PROPERTY-NAME = PROPERTY-VALUE
+	//    }
+
+	XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
+		outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
+		title = 'XML Report'             // Set the 'title' property of the (XML) Report
+	}
+	HtmlReport('html') {                  // Report type is 'html'
+		outputFile = 'target/CodeNarc-Report.html'
+		title = 'HTML Report'
+	}
 }
