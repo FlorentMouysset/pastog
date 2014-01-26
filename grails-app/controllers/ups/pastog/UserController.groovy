@@ -2,6 +2,7 @@ package ups.pastog
 
 
 import static org.springframework.http.HttpStatus.*
+import org.springframework.dao.DataIntegrityViolationException
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -19,34 +20,33 @@ class UserController {
     }
 
     def create() {
-        respond new User(params)
+         [userInstance: new User(params)]
     }
 
     @Transactional
-    def save(User userInstance) {
-        if (userInstance == null) {
-            notFound()
+    def save() {
+         def userInstance = new User(params)
+        if (!userInstance.save(flush: true)) {
+            render(view: "create", model: [userInstance: userInstance])
             return
         }
+                
+                def userRole = Admin.findByAuthority('ROLE_ADMIN')
+                UserAdmin.create userInstance, userRole
 
-        if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'create'
-            return
-        }
-
-        userInstance.save flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'userInstance.label', default: 'User'), userInstance.id])
-                redirect userInstance
-            }
-            '*' { respond userInstance, [status: CREATED] }
-        }
+        flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+        redirect(controller: "domain")
     }
 
-    def edit(User userInstance) {
-        respond userInstance
+    def edit(Long id) {
+		  def userInstance = User.get(id)
+        if (!userInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [tuserInstance: userInstance]
     }
 
     @Transactional
@@ -73,21 +73,22 @@ class UserController {
     }
 
     @Transactional
-    def delete(User userInstance) {
-
-        if (userInstance == null) {
-            notFound()
+    def delete(Long id) {
+        def userInstance = User.get(id)
+        if (!userInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
             return
         }
 
-        userInstance.delete flush:true
-
-        request.withFormat {
-            form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
+        try {
+            userInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "list")
+        }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), id])
+            redirect(action: "show", id: id)
         }
     }
 
