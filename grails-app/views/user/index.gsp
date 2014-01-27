@@ -44,8 +44,6 @@
 					
 						<td>${fieldValue(bean: userInstance, field: "email")}</td>
 					
-						<td>${fieldValue(bean: userInstance, field: "passWord")}</td>
-					
 					</tr>
 				</g:each>
 				</tbody>

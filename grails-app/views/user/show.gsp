@@ -50,15 +50,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.passWord}">
-				<li class="fieldcontain">
-					<span id="passWord-label" class="property-label"><g:message code="user.passWord.label" default="Pass Word" /></span>
-					
-						<span class="property-value" aria-labelledby="passWord-label"><g:fieldValue bean="${userInstance}" field="passWord"/></span>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form url="[resource:userInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
