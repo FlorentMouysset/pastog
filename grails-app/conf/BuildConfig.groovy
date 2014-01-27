@@ -47,10 +47,12 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
     }
 
-    dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-        // runtime 'mysql:mysql-connector-java:5.1.24'
-    }
+ 
+	dependencies {
+		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
+		// runtime 'mysql:mysql-connector-java:5.1.24'
+		test "org.gebish:geb-spock:0.9.2"
+	}
 
     plugins {
         // plugins for the build system only
@@ -71,27 +73,31 @@ grails.project.dependency.resolution = {
 		compile ':cache:1.1.1'
 		compile ":codenarc:0.19"
 		compile ":spring-security-core:1.2.7.3"
+		
+		test ":code-coverage:1.2.7"
+		test("org.grails.plugins:geb:0.9.2")
     }
 }
-codenarc.properties = {
-	// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
-	GrailsPublicControllerMethod.enabled = false
 
-}
-
-codenarc.reports = {
-	// Each report definition is of the form:
-	//    REPORT-NAME(REPORT-TYPE) {
-	//        PROPERTY-NAME = PROPERTY-VALUE
-	//        PROPERTY-NAME = PROPERTY-VALUE
-	//    }
-
-	XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
-		outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
-		title = 'XML Report'             // Set the 'title' property of the (XML) Report
+	codenarc.properties = {
+		// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
+		GrailsPublicControllerMethod.enabled = false
+	
 	}
-	HtmlReport('html') {                  // Report type is 'html'
-		outputFile = 'target/CodeNarc-Report.html'
-		title = 'HTML Report'
+	
+	codenarc.reports = {
+		// Each report definition is of the form:
+		//    REPORT-NAME(REPORT-TYPE) {
+		//        PROPERTY-NAME = PROPERTY-VALUE
+		//        PROPERTY-NAME = PROPERTY-VALUE
+		//    }
+	
+		XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
+			outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
+			title = 'XML Report'             // Set the 'title' property of the (XML) Report
+		}
+		HtmlReport('html') {                  // Report type is 'html'
+			outputFile = 'target/CodeNarc-Report.html'
+			title = 'HTML Report'
+		}
 	}
-}
