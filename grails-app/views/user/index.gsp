@@ -1,5 +1,5 @@
 
-<%@ page import="ups.pastog.User" %>
+<%@ page import="ups.pastog.user.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,7 +11,7 @@
 		<a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/login/auth')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
@@ -26,11 +26,13 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'user.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="secondName" title="${message(code: 'user.secondName.label', default: 'Second Name')}" />
+						<g:sortableColumn property="secondName" title="${message(code: 'user.secondName.label', default: 'SecondName')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
 					
-						<g:sortableColumn property="passWord" title="${message(code: 'user.passWord.label', default: 'Pass Word')}" />
+						<g:sortableColumn property="passWord" title="${message(code: 'user.passWord.label', default: 'PassWord')}" />
+						
+						<g:sortableColumn property="confirmPassWord" title="${message(code: 'user.confirmpassWord.label', default: 'ConfirmPassWord')}" />
 					
 					</tr>
 				</thead>

@@ -1,5 +1,5 @@
 
-<%@ page import="ups.pastog.User" %>
+<%@ page import="ups.pastog.user.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
