@@ -1,6 +1,7 @@
 package ups.pastog
 
 import sun.rmi.runtime.Log
+import ups.pastog.user.User
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -48,7 +49,7 @@ class DomainController {
             return
         }
 
-        User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
+        //User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
         if(!user.save()){
             user = User.findByName("ad")
         }
