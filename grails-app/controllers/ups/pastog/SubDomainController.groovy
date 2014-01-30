@@ -25,10 +25,15 @@ class SubDomainController {
 
     @Transactional
     def save(SubDomain subDomainInstance) {
+
         if (subDomainInstance == null) {
             notFound()
             return
         }
+        User user = new User(name: "admin", secondName: "admin", email: "admin@hotmail.fr" , passWord: "aaa")
+        user.save()
+        subDomainInstance.user = user
+        subDomainInstance.save()
 
         if (subDomainInstance.hasErrors()) {
             respond subDomainInstance.errors, view:'create'

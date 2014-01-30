@@ -49,7 +49,7 @@ class DomainController {
             return
         }
 
-        User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
+        //User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
         if(!user.save()){
             user = User.findByName("ad")
         }
