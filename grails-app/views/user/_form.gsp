@@ -1,4 +1,4 @@
-<%@ page import="ups.pastog.User" %>
+<%@ page import="ups.pastog.user.User" %>
 
 
 <table>

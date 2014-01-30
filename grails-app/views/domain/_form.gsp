@@ -15,7 +15,7 @@
 		<g:message code="domain.autor.label" default="Autor" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="autor" name="autor.id" from="${ups.pastog.User.list()}" optionKey="id" required="" value="${domainInstance?.autor?.id}" class="many-to-one"/>
+	<g:select id="autor" name="autor.id" from="${ups.pastog.user.User.list()}" optionKey="id" required="" value="${domainInstance?.autor?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'description', 'error')} ">

@@ -114,3 +114,25 @@ log4j = {
            'net.sf.ehcache.hibernate'
 		   
 }
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'ups.pastog.user.User'
+environments {
+	test {
+	  
+	  grails.plugins.springsecurity.password.algorithm = 'SHA-1'
+	}
+  }
+
+// email checking on subscription
+
+environments {
+  development {
+	pastog.auth.check_user_email = true
+  }
+  test {
+	pastog.auth.check_user_email = false
+  }
+  prod {
+	pastog.auth.check_user_email = true
+  }
+}
