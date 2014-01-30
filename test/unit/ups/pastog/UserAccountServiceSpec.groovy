@@ -1,13 +1,15 @@
 package ups.pastog
 
 import grails.test.mixin.TestFor
+
 import spock.lang.Specification
 
+
 /**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
+ * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
-@TestFor(Admin)
-class AdminSpec extends Specification {
+//@TestFor(UserAccountService)
+class UserAccountServiceSpec extends Specification {
 
     def setup() {
     }

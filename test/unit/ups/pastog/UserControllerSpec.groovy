@@ -4,6 +4,8 @@ package ups.pastog
 
 import grails.test.mixin.*
 import spock.lang.*
+import ups.pastog.user.User;
+import ups.pastog.user.UserController;
 
 @TestFor(UserController)
 @Mock(User)

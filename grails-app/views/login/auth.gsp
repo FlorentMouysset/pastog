@@ -95,8 +95,8 @@
 
                 <form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
                         <p>
-                                <label for='username'><g:message code="springSecurity.login.username.label"/>:</label>
-                                <input type='text' class='text_' name='j_username' id='username'/>
+                                <label for='name'><g:message code="springSecurity.login.name.label"/>:</label>
+                                <input type='text' class='text_' name='j_username' id='name'/>
                         </p>
 
                         <p>
@@ -111,6 +111,10 @@
 
                         <p>
                                 <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
+                        </p>
+                        <p>
+                       	<li><a class="create" href="${createLink(uri: '/user/create')}">S'inscrire</a></li>
+ 					
                         </p>
                 </form>
         </div>

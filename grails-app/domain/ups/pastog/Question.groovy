@@ -1,4 +1,7 @@
 package ups.pastog
+
+import ups.pastog.user.User;
+
 class Question {
 	String enunciated
 	User user
