@@ -54,22 +54,18 @@ grails.project.dependency.resolution = {
 
     }
 
+
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.24'
-	//	test "org.gebish:geb-spock:0.9.2"
-	//	test "org.seleniumhq.selenium:selenium-support:2.26.0"
-	//	test "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0"
-	//	test("org.seleniumhq.selenium:selenium-htmlunit-driver:2.26.0") {
-	//		exclude 'xml-apis'
-	//	}
+
 		test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
 		test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
 		
 		// You usually only need one of these, but this project uses both
 		test "org.gebish:geb-spock:$gebVersion"
-	//	test "org.gebish:geb-junit4:$gebVersion"
     }
+
 
     plugins {
         // plugins for the build system only
@@ -88,13 +84,34 @@ grails.project.dependency.resolution = {
         //runtime ":cached-resources:1.1"
         //runtime ":yui-minify-resources:0.1.5"
 		compile ':cache:1.1.1'
-		
+		compile ":codenarc:0.19"
 		compile ":spring-security-core:1.2.7.3"
 		
 		test ":geb:$gebVersion"
-		//test ":spock:0.7" //est-ce bien utile ?
-		//test ":geb:0.9.2"
-		//compile ":geb:0.9.2" //est-ce bien utile ?
 		// error compile "org.gebish:geb-core:0.9.2", "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0", "org.seleniumhq.selenium:selenium-support:2.26.0"
+		test ":code-coverage:1.2.7"
     }
 }
+
+	codenarc.properties = {
+		// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
+		GrailsPublicControllerMethod.enabled = false
+	
+	}
+	
+	codenarc.reports = {
+		// Each report definition is of the form:
+		//    REPORT-NAME(REPORT-TYPE) {
+		//        PROPERTY-NAME = PROPERTY-VALUE
+		//        PROPERTY-NAME = PROPERTY-VALUE
+		//    }
+	
+		XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
+			outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
+			title = 'XML Report'             // Set the 'title' property of the (XML) Report
+		}
+		HtmlReport('html') {                  // Report type is 'html'
+			outputFile = 'target/CodeNarc-Report.html'
+			title = 'HTML Report'
+		}
+	}

@@ -46,7 +46,7 @@ class UserController {
             return
         }
 
-        [tuserInstance: userInstance]
+        [userInstance: userInstance]
     }
 
     @Transactional

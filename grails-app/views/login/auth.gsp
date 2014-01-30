@@ -112,6 +112,10 @@
                         <p>
                                 <input type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
                         </p>
+                        <p>
+                       	<li><a class="create" href="${createLink(uri: '/user/create')}">S'inscrire</a></li>
+ 						<li><g:link class="create" action="create"></g:link></li>
+                        </p>
                 </form>
         </div>
 </div>
