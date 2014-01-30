@@ -27,8 +27,7 @@
 			</g:hasErrors>
             <g:form action="save" method="post" >
 				<fieldset class="form">
-                    <label type="text" id="title">Title :</label><input type="text" name="title"/><br>
-                    <label type="text" id="description">Description :</label><input type="text" name="description"/><br>
+                    <g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
 				<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

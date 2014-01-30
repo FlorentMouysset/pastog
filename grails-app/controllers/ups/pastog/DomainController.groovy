@@ -19,17 +19,27 @@ class DomainController {
         respond domainInstance
     }
 
-    def create(Long id) {
-        /*respond new Domain(params)*/
-        User userAdmin = User.findByName("admin")
-        /*Voir si l'utilisateur est un administrateur*/
-         def userInstance = User.get(id)
-         if(userInstance.name.equals( userAdmin.name ) == 0 )
-            Domain domain = new Domain(title: "title", description: "description", author: userInstance)
-
-        else 
-        respond domain
+    def create()
+    {
+        respond new Domain(params)
     }
+    //{
+
+        //User userAdmin = User.findByName("admin")
+        /*Voir si l'utilisateur est un administrateur*/
+         //def userInstance = User.get(id)
+        /*si l'utilisateur est un admin*/
+        /*if(userInstance.name.equals( userAdmin.name ) == 0 ){
+            Domain domain = new Domain(title: "title", description: "description", author: userInstance)
+            respond domain
+        }
+        else
+        {
+            flash.message ="Cette action est réserver au administrateur"
+            redirect(action:"create")
+        }
+
+    }*/
 
     @Transactional
     def save(Domain domainInstance) {
@@ -37,6 +47,15 @@ class DomainController {
             notFound()
             return
         }
+
+        User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
+        if(!user.save()){
+            user = User.findByName("ad")
+        }
+
+        /*User user = User.findByName("admin")*/
+        domainInstance.author =  user
+        domainInstance.save()
 
         if (domainInstance.hasErrors()) {
             respond domainInstance.errors, view:'create'
