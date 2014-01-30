@@ -1,4 +1,4 @@
-package ups.pastog
+package ups.pastog.user
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 

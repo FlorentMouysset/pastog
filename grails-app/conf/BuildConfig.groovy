@@ -25,10 +25,7 @@ grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
-        // specify dependency exclusions here; for example, uncomment this to disable ehcache:
-        // excludes 'ehcache'
-		
-		}
+       	}
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
@@ -50,7 +47,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
 		
 		// For Geb snapshot
-		mavenRepo "http://oss.sonatype.org/content/repositories/snapshots"
+		//mavenRepo "http://oss.sonatype.org/content/repositories/snapshots"
 
     }
 
@@ -67,6 +64,7 @@ grails.project.dependency.resolution = {
     }
 
 
+
     plugins {
         // plugins for the build system only
         build ":tomcat:7.0.47"
@@ -79,11 +77,7 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.8"
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2.1"
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0.1"
-        //runtime ":cached-resources:1.1"
-        //runtime ":yui-minify-resources:0.1.5"
-		compile ':cache:1.1.1'
+    	compile ':cache:1.1.1'
 		compile ":codenarc:0.19"
 		compile ":spring-security-core:1.2.7.3"
 		
@@ -100,12 +94,7 @@ grails.project.dependency.resolution = {
 	}
 	
 	codenarc.reports = {
-		// Each report definition is of the form:
-		//    REPORT-NAME(REPORT-TYPE) {
-		//        PROPERTY-NAME = PROPERTY-VALUE
-		//        PROPERTY-NAME = PROPERTY-VALUE
-		//    }
-	
+		
 		XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
 			outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
 			title = 'XML Report'             // Set the 'title' property of the (XML) Report

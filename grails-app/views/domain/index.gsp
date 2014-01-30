@@ -26,9 +26,9 @@
 					
 						<g:sortableColumn property="title" title="${message(code: 'domain.title.label', default: 'Title')}" />
 					
-						<th><g:message code="domain.autor.label" default="Autor" /></th>
-					
 						<g:sortableColumn property="description" title="${message(code: 'domain.description.label', default: 'Description')}" />
+					
+						<th><g:message code="domain.author.label" default="Author" /></th>
 					
 					</tr>
 				</thead>
@@ -38,9 +38,9 @@
 					
 						<td><g:link action="show" id="${domainInstance.id}">${fieldValue(bean: domainInstance, field: "title")}</g:link></td>
 					
-						<td>${fieldValue(bean: domainInstance, field: "autor")}</td>
-					
 						<td>${fieldValue(bean: domainInstance, field: "description")}</td>
+					
+						<td>${fieldValue(bean: domainInstance, field: "author")}</td>
 					
 					</tr>
 				</g:each>

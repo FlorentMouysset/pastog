@@ -1,8 +1,13 @@
-package ups.pastog
+package ups.pastog.user
 
 
 import static org.springframework.http.HttpStatus.*
+
 import org.springframework.dao.DataIntegrityViolationException
+
+import ups.pastog.user.Role;
+import ups.pastog.user.User;
+import ups.pastog.user.UserRole;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -31,8 +36,8 @@ class UserController {
             return
         }
                 
-                def userRole = Admin.findByAuthority('ROLE_ADMIN')
-                UserAdmin.create userInstance, userRole
+                def userRole = Role.findByAuthority('ROLE_ADMIN')
+                UserRole.create userInstance, userRole
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
         redirect(controller: "domain")
@@ -45,9 +50,11 @@ class UserController {
             redirect(action: "list")
             return
         }
+		
 
         [userInstance: userInstance]
     }
+	
 
     @Transactional
     def update(User userInstance) {
@@ -101,4 +108,47 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	   def register = {
+        // new user posts his registration details
+        if (request.method == 'POST') {
+            // create domain object and assign parameters using data binding
+            def u = new User(params)
+             if (! u.save()) {
+                // validation failed, render registration page again
+                return [user:u]
+            } else {
+                // validate/save ok, store user in session, redirect to classDomain
+                session.user = u
+                redirect(controller:'domain')
+            }
+        } else if (session.user) {
+            // don't allow registration while user is logged in
+            redirect(controller:'domain')
+        }
+    }
+ 
+    def login = {
+        if (request.method == 'POST') {
+           
+			  def u = User.findByName(params.name)
+			
+            if (u) {
+                // username and password match -> log in
+                session.user = u
+                redirect(controller:'domain')
+            } else {
+                flash.message = "User not found"
+                redirect(view:'/layouts/main')
+            }
+        } else if (session.user) {
+            // don't allow login while user is logged in
+            redirect(controller:'domain')
+        }
+    }
+ 
+    def logout = {
+        session.invalidate()
+        redirect(controller:'logout')
+    }
 }
+
