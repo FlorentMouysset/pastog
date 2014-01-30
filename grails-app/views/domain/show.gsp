@@ -32,20 +32,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${domainInstance?.autor}">
-				<li class="fieldcontain">
-					<span id="autor-label" class="property-label"><g:message code="domain.autor.label" default="Autor" /></span>
-					
-						<span class="property-value" aria-labelledby="autor-label"><g:link controller="user" action="show" id="${domainInstance?.autor?.id}">${domainInstance?.autor?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${domainInstance?.description}">
 				<li class="fieldcontain">
 					<span id="description-label" class="property-label"><g:message code="domain.description.label" default="Description" /></span>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${domainInstance}" field="description"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${domainInstance?.author}">
+				<li class="fieldcontain">
+					<span id="author-label" class="property-label"><g:message code="domain.author.label" default="Author" /></span>
+					
+						<span class="property-value" aria-labelledby="author-label"><g:link controller="user" action="show" id="${domainInstance?.author?.id}">${domainInstance?.author?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
