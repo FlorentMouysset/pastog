@@ -14,7 +14,7 @@ class SubDomainControllerSpec extends Specification {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
-        params["label"] = "master2 DL"
+        params["label"] = "IVVQ"
         params["user"] = new User(name: "mehdi", secondName:"but", email: "mehdi@hotmail.fr",passWord:"azerty")
     }
 
