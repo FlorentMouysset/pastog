@@ -4,6 +4,7 @@ package ups.pastog
 
 import grails.test.mixin.*
 import spock.lang.*
+import ups.pastog.user.User
 
 @TestFor(SubDomainController)
 @Mock(SubDomain)
@@ -13,6 +14,8 @@ class SubDomainControllerSpec extends Specification {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+        params["label"] = "master2 DL"
+        params["user"] = new User(name: "mehdi", secondName:"but", email: "mehdi@hotmail.fr",passWord:"azerty")
     }
 
     void "Test the index action returns the correct model"() {
