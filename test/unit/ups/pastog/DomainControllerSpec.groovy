@@ -4,6 +4,7 @@ package ups.pastog
 
 import grails.test.mixin.*
 import spock.lang.*
+import ups.pastog.user.User
 
 @TestFor(DomainController)
 @Mock(Domain)
@@ -12,7 +13,11 @@ class DomainControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+       // params["name"] = 'someValidName'
+        params["title"] = "master2 DL"
+        params["description"] = "domaine master 2 DL"
+        params["author"] = new User(name: "amine", secondName:"l", email: "admin1@mail.fr",passWord:"123")
+
     }
 
     void "Test the index action returns the correct model"() {

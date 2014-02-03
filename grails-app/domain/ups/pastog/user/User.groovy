@@ -32,21 +32,21 @@ class User {
 		 *
 		 * @return true if the user is a admin
 		 */
-		boolean isAdmin() {
+		/*boolean isAdmin() {
 		  UserRole.get(this.id, RoleEnum.ADMIN_ROLE.id)
-		}
+		}*/
 	  
 		/**
 		 *
 		 * @return true if the user is other student
 		 */
-		boolean isStudent() {
+		/*boolean isStudent() {
 			UserRole.get(this.id, RoleEnum.STUDENT_ROLE.id)
 		  }
 	  
 		Set<Role> getAuthorities() {
 		  UserRole.findAllByUser(this).collect { it.role } as Set
-		}
+		}*/
 	  
 //		def beforeInsert() {
 //		  encodePassword()
@@ -64,7 +64,7 @@ class User {
 	 
     
     /****** CUSTOM ADDITION ******/
-    String toString() {
+   /* String toString() {
         name + " " + secondName
-    }
+    }*/
 }
