@@ -78,7 +78,7 @@ grails.project.dependency.resolution = {
         runtime ":resources:1.2.1"
     	compile ':cache:1.1.1'
 		compile ":codenarc:0.19"
-	//	compile ":spring-security-core:1.2.7.3"
+		//compile ":spring-security-core:1.2.7.3"
 		
 		test ":geb:$gebVersion"
 		compile ":geb:$gebVersion"
