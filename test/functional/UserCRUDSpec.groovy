@@ -5,7 +5,7 @@ import spock.lang.*
 import pages.*
 
 @Stepwise
-class PersonCRUDSpec extends GebReportingSpec {
+class UserCRUDSpec extends GebReportingSpec {
 	
 	def "there are no people"() {
 		when:

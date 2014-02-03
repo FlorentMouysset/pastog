@@ -3,11 +3,11 @@ package pages
 class CreatePage extends ScaffoldPage {
 
 	static at = {
-		title ==~ /Create.+/
+		title ==~ /POP.+/
 	}
 	
 	static content = {
-		createButton(to: ShowPage) { create() }
+	//	createButton(to: ShowPage) { create() }
 	}
 
 }

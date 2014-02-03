@@ -1,6 +1,6 @@
 package ups.pastog.user
 
-import grails.plugins.springsecurity.SpringSecurityService;
+
 
 class User {
 

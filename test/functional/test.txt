@@ -1,0 +1,5 @@
+url = pastog_/user/register
+title = POP - User Registration
+
+base : pastog_/
+title = PasTog - Homepage

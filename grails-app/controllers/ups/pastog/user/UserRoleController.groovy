@@ -1,6 +1,4 @@
 package ups.pastog.user
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken as AuthToken
-import org.springframework.security.core.context.SecurityContextHolder as SCH
 
 import ups.pastog.Domain;
 import ups.pastog.user.Role;
@@ -29,9 +27,9 @@ class UserRoleController {
 			flash.message = message(code: 'app.reg.accept', args: [user.name, user.secondName])
 			
 			// Log the newly created user in
-			def auth = new AuthToken(params.name, params.passWord)
-			def authtoken = daoAuthenticationProvider.authenticate(auth)
-			SCH.context.authentication = authtoken
+			//def auth = new AuthToken(params.name, params.passWord)
+			//def authtoken = daoAuthenticationProvider.authenticate(auth)
+			//SCH.context.authentication = authtoken
 			redirect(controller: 'domain', action: 'list')
 		} else {
 			render(view: "../index", model: [userInstance: urc])

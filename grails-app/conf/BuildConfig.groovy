@@ -59,7 +59,6 @@ grails.project.dependency.resolution = {
 		test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
 		test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
 		
-		// You usually only need one of these, but this project uses both
 		test "org.gebish:geb-spock:$gebVersion"
     }
 
@@ -79,9 +78,10 @@ grails.project.dependency.resolution = {
         runtime ":resources:1.2.1"
     	compile ':cache:1.1.1'
 		compile ":codenarc:0.19"
-		compile ":spring-security-core:1.2.7.3"
+	//	compile ":spring-security-core:1.2.7.3"
 		
 		test ":geb:$gebVersion"
+		compile ":geb:$gebVersion"
 		// error compile "org.gebish:geb-core:0.9.2", "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0", "org.seleniumhq.selenium:selenium-support:2.26.0"
 		test ":code-coverage:1.2.7"
     }
