@@ -7,7 +7,7 @@ import pages.*
 @Stepwise
 class CreateUserSpec extends GebReportingSpec {
 	
-	def " create user ok"() {
+	def "create user ok"() {
 		given:
 		to CreateUserPage
 		
