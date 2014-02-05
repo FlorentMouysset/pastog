@@ -3,8 +3,6 @@
 
 
 class User {
-
- transient springSecurityService
  
  String name
  String secondName
