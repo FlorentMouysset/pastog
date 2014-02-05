@@ -8,31 +8,31 @@ grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 //grails.project.fork = [
-    // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
-    //  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
+// configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
+//  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
 
-    // configure settings for the test-app JVM, uses the daemon by default
-    //test: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
-    // configure settings for the run-app JVM
-    //run: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
-    // configure settings for the run-war JVM
-   // war: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
-    // configure settings for the Console UI JVM
-   // console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
+// configure settings for the test-app JVM, uses the daemon by default
+//test: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
+// configure settings for the run-app JVM
+//run: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
+// configure settings for the run-war JVM
+// war: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
+// configure settings for the Console UI JVM
+// console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 //]
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
-       	}
+    }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
-	def gebVersion = "0.9.2"
-	def seleniumVersion = "2.39.0"
-	
+    def gebVersion = "0.9.2"
+    def seleniumVersion = "2.39.0"
+
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
 
@@ -45,9 +45,9 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
-		
-		// For Geb snapshot
-		//mavenRepo "http://oss.sonatype.org/content/repositories/snapshots"
+
+        // For Geb snapshot
+        //mavenRepo "http://oss.sonatype.org/content/repositories/snapshots"
 
     }
 
@@ -56,11 +56,11 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.24'
 
-		test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
-		test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
-		
-		// You usually only need one of these, but this project uses both
-		test "org.gebish:geb-spock:$gebVersion"
+        test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
+        test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
+
+        // You usually only need one of these, but this project uses both
+        test "org.gebish:geb-spock:$gebVersion"
     }
 
 
@@ -71,36 +71,36 @@ grails.project.dependency.resolution = {
 
         // plugins for the compile step
         compile ":scaffolding:2.0.1"
-       
+
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.4" // or ":hibernate4:4.1.11.4"
         runtime ":database-migration:1.3.8"
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2.1"
-    	compile ':cache:1.1.1'
-		compile ":codenarc:0.19"
-		compile ":spring-security-core:1.2.7.3"
-		
-		test ":geb:$gebVersion"
-		// error compile "org.gebish:geb-core:0.9.2", "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0", "org.seleniumhq.selenium:selenium-support:2.26.0"
-		test ":code-coverage:1.2.7"
+        compile ':cache:1.1.1'
+        compile ":codenarc:0.19"
+        compile ":spring-security-core:1.2.7.3"
+
+        test ":geb:$gebVersion"
+        // error compile "org.gebish:geb-core:0.9.2", "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0", "org.seleniumhq.selenium:selenium-support:2.26.0"
+        test ":code-coverage:1.2.7"
     }
 }
 
-	codenarc.properties = {
-		// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
-		GrailsPublicControllerMethod.enabled = false
-	
-	}
-	
-	codenarc.reports = {
-		
-		XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
-			outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
-			title = 'XML Report'             // Set the 'title' property of the (XML) Report
-		}
-		HtmlReport('html') {                  // Report type is 'html'
-			outputFile = 'target/CodeNarc-Report.html'
-			title = 'HTML Report'
-		}
-	}
+codenarc.properties = {
+    // Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
+    GrailsPublicControllerMethod.enabled = false
+
+}
+
+codenarc.reports = {
+
+    XmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
+        outputFile = 'target/CodeNarc-Report.xml'  // Set the 'outputFile' property of the (XML) Report
+        title = 'XML Report'             // Set the 'title' property of the (XML) Report
+    }
+    HtmlReport('html') {                  // Report type is 'html'
+        outputFile = 'target/CodeNarc-Report.html'
+        title = 'HTML Report'
+    }
+}
