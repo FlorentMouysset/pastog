@@ -26,7 +26,7 @@ def "user constraints"() {
 	
 	where:
      name                      | secondName                | email             | password          | confirmPassword     | valid
-	 "Name"                    | "secondName"              | "email@email.com" | "password"        |"confirmpassword"    | false
+	
 	 "Name"                    | "secondName"              | "email@email.com" | "password"        |"confirmpassword"    | true
 	 "Name0215"                | "secondName"              | "email@email.com" | "password"        |"confirmpassword"    | false
 	 "valeurplusgrandequevingt"| "secondName"              | "email@email.com" | "password"        |"confirmpassword"    | false
@@ -52,7 +52,7 @@ def "savingUser"() {
 	users*.save(flush: true)
 
 	expect:
-	assertEquals 0, User.list().size()
+	assertEquals 2, User.list().size()
 }
 
 @Unroll
@@ -64,6 +64,6 @@ def "testUserHaveSameEmail"() {
 			new User(firstName: "Serena", secondName: "axxin", email:"bra.ad@toto.com", password: "password", confirmPassword:"password")]
 	users*.save(flush: true)
 	expect:
-	assertEquals 0, User.list().size()
+	assertEquals 1, User.list().size()
 }
 }
