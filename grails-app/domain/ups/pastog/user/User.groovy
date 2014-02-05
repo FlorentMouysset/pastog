@@ -1,6 +1,6 @@
 package ups.pastog.user
 
-import grails.plugins.springsecurity.SpringSecurityService;
+
 
 class User {
 
@@ -34,14 +34,15 @@ class User {
 		 *
 		 * @return true if the user is a admin
 		 */
-		boolean isAdmin() {
+		/*boolean isAdmin() {
 		  UserRole.get(this.id, RoleEnum.ADMIN_ROLE.id)
-		}
+		}*/
 	  
 		/**
 		 *
 		 * @return true if the user is other student
 		 */
+<<<<<<< HEAD
 		boolean isUser() {
 			UserRole.get(this.id, RoleEnum.USER_ROLE.id)
 		  }
@@ -58,6 +59,22 @@ class User {
 //
 //	def beforeUpdate() {
 //		if (isDirty('password')) {
+=======
+		/*boolean isStudent() {
+			UserRole.get(this.id, RoleEnum.STUDENT_ROLE.id)
+		  }
+	  
+		Set<Role> getAuthorities() {
+		  UserRole.findAllByUser(this).collect { it.role } as Set
+		}*/
+	  
+//		def beforeInsert() {
+//		  encodePassword()
+//		}
+//	  
+//		def beforeUpdate() {
+//		  if (isDirty('passWord')) {
+>>>>>>> 65983722bfee8bcfd81ccd7ab9a35c341a7191e0
 //			encodePassword()
 //		}
 //	}
@@ -69,7 +86,7 @@ class User {
 	 
     
     /****** CUSTOM ADDITION ******/
-    String toString() {
+   /* String toString() {
         name + " " + secondName
-    }
+    }*/
 }

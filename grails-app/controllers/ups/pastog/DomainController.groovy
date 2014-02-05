@@ -49,14 +49,35 @@ class DomainController {
             return
         }
 
-        //User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
-        if(!user.save()){
-            user = User.findByName("ad")
+        /*User user  = User.findByName("admin")
+        if(user == null){
+            notFound()
+            return
+        }*/
+        /*if(user.name != session.user.name)
+        {
+            flash.message = "Fonction réservée à l'administrateur"
+            redirect(view:'create')
+        }*/
+        if(session.user != null && session.user.name != null){
+            if(session.user.name != "admin")
+            {
+                flash.message = "Fonction réservée à l'administrateur"
+                redirect(view:'create')
+            }
+            else
+            {
+                domainInstance.author =  user
+                domainInstance.save()
+            }
         }
 
+        //User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
+        /*if(!user.save()){
+            user = User.findByName("ad")
+        }*/
         /*User user = User.findByName("admin")*/
-        domainInstance.author =  user
-        domainInstance.save()
+        /*domainInstance.author =  user*/
 
         if (domainInstance.hasErrors()) {
             respond domainInstance.errors, view:'create'
