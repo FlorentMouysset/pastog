@@ -56,11 +56,18 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.24'
 
+<<<<<<< HEAD
         test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
         test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
 
         // You usually only need one of these, but this project uses both
         test "org.gebish:geb-spock:$gebVersion"
+=======
+		test("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
+		test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
+		
+		test "org.gebish:geb-spock:$gebVersion"
+>>>>>>> 0f4535a60211bcdd622b187fbab4b4fb9d1465b2
     }
 
 
@@ -77,13 +84,14 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.8"
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2.1"
-        compile ':cache:1.1.1'
-        compile ":codenarc:0.19"
-        compile ":spring-security-core:1.2.7.3"
+    	compile ':cache:1.1.1'
+		compile ":codenarc:0.19"
+		compile ":spring-security-core:1.2.7.3"
 
-        test ":geb:$gebVersion"
-        // error compile "org.gebish:geb-core:0.9.2", "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0", "org.seleniumhq.selenium:selenium-support:2.26.0"
-        test ":code-coverage:1.2.7"
+		test ":geb:$gebVersion"
+		compile ":geb:$gebVersion"
+		// error compile "org.gebish:geb-core:0.9.2", "org.seleniumhq.selenium:selenium-firefox-driver:2.26.0", "org.seleniumhq.selenium:selenium-support:2.26.0"
+		test ":code-coverage:1.2.7"
     }
 }
 

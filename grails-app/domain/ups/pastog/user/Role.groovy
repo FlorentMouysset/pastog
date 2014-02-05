@@ -2,26 +2,29 @@ package ups.pastog.user
 
 class Role {
 
-        String authority
+	String authority
 
-        static mapping = {
-                cache true
-        }
+	static mapping = {
+		cache true
+        version(false)
+	}
 
-        static constraints = {
-                authority blank: false, unique: true
-        }
-		enum RoleEnum {
-			ADMIN_ROLE(1),
-			STUDENT_ROLE(2)
-        }
-		Long id
-		
-		void RoleEnum(Long id) {
-			this.id = id
-		}
-		
-		Role getRole() {
-		Role.get(id)
-		 }
+	static constraints = {
+		authority blank: false, unique: true, inList: RoleEnum.values()*.name()
+	}
+}
+
+enum RoleEnum {
+    ADMIN_ROLE(1),
+    USER_ROLE(2)
+
+    Long id
+
+    RoleEnum(Long id) {
+        this.id = id
+    }
+
+    Role getRole() {
+        Role.get(id)
+    }
 }
