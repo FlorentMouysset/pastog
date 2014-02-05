@@ -7,19 +7,31 @@ import pages.*
 @Stepwise
 class LoginSpec extends GebReportingSpec {
 	
-	def "create new user"() {
-		when:
-		newUserLink.click()
-		then:
-		at CreatePage
+	
+	def "the login page is the login page"() {
+		given:
+		to LoginPage
+ 
+		expect:
+		at LoginPage
 	}
 	
-
-	def "test simple"() {
-		when:
+	def "given login page you can create a new user"() {
+		given:
 		to LoginPage
+ 
+		expect:
+		at LoginPage
+		
+		when:
+		createUserLink.click()
+		
 		then:
-		1 == 1
+		at CreateUserPage
 	}
+	
+	
+	
+	
 	
 }

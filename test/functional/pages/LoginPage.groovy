@@ -1,16 +1,19 @@
 package pages
 
 import geb.Module
+import geb.Page
 
-class LoginPage extends ScaffoldPage {
-	static url = "pastog_/"
+class LoginPage extends Page {
+	//not : "pastog_" "/" "" "pastog_/"
+	static url = "/pastog_"
+	
 	
 	static at = {
-		title ==~ /PasTog - Homepage/
+		title == "PasTog - Homepage"
 	}
 	
 	static content = {
-		newUserLink(to: CreatePage) { $("a", text: "Sign up now!") }
+		createUserLink{ $("a", text: "Sign up now!") }
 		//TODO add fields
 		//peopleTable { $("div.content table", 0) }
 		//personRow { module PersonRow, personRows[it] }
