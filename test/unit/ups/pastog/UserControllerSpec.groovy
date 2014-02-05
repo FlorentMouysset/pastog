@@ -135,37 +135,33 @@ class UserControllerSpec extends Specification {
 //            response.redirectedUrl == '/index'
 //            flash.message != null
     }
-	
-	//@amel
-	
-	def "toLogUser"() {
-		given:
-		controller.params.name= "daniel1205"
-		controller.params.password = "pas"
+//@amel
+def "toLogUser"() {
+given:
+controller.params.name= "daniel1205"
+controller.params.password = "pas"
 
-		and:
-		controller.login()
+and:
+controller.login()
 
-		expect:
-		controller.getFlash().error != "User not found"
-	}
-	
-	def "toSaveUserWithFailedPassword"() {
-		given:
-		controller.params.name = "toto"
-		controller.params.secondName = "toto"
-		controller.params.email = "toto@toto.fr"
-		controller.params.password = "password"
-		controller.params.confirmPassword = "pass"
+expect:
+controller.getFlash().error != "User not found"
+}
+def "toSaveUserWithFailedPassword"() {
+given:
+controller.params.name = "toto"
+controller.params.secondName = "toto"
+controller.params.email = "toto@toto.fr"
+controller.params.password = "password"
+controller.params.confirmPassword = "pass"
 
-		and:
-		controller.create()
+and:
+controller.create()
 
-		expect:
-		controller.getFlash().error != "user.password.checking.failed"
-	} 
-	
-	def "ToSaveUserInDB"() {
+expect:
+controller.getFlash().error != "user.password.checking.failed"
+} 
+def "ToSaveUserInDB"() {
         given:
         controller.params.name = "test1"
         controller.params.secondName = "testSecondName"
@@ -180,7 +176,5 @@ class UserControllerSpec extends Specification {
         controller.getFlash().error !="user.create.failed"
     }
 
-	
-	
 
 }
