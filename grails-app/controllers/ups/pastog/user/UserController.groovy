@@ -26,6 +26,7 @@ class UserController {
 
     def create() {
          [userInstance: new User(params)]
+		 
     }
 
     @Transactional
@@ -47,7 +48,7 @@ class UserController {
 		  def userInstance = User.get(id)
         if (!userInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), id])
-            redirect(action: "list")
+            //redirect(action: "list")
             return
         }
 		
@@ -115,9 +116,11 @@ class UserController {
             def u = new User(params)
              if (! u.save()) {
                 // validation failed, render registration page again
+			   flash.error="user.creation.failed"
                 return [user:u]
             } else {
                 // validate/save ok, store user in session, redirect to classDomain
+			flash.message="user.created"
                 session.user = u
                 redirect(controller:'domain')
             }
