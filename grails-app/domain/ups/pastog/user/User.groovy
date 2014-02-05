@@ -19,8 +19,7 @@ class User {
         name(size: 2..20, blank: false, matches: "[a-zA-Z]+")
         secondName(size: 2..20, blank: false, matches: "[a-zA-Z]+")
         email(email:true, nullable:false, blank: false, unique: true)
-        password(nullable:false)
-  password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
+        password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
             if (obj.password != obj.confirmPassword)
                 return 'user.password.dontmatch'
         }
