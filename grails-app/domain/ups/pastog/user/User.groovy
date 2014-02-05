@@ -17,9 +17,11 @@ class User {
 	
     static constraints = {
 		
-		name(blank:false)
-		secondName(blank:false)
-		email(blank:false, email:true, unique: true)
+		  
+        name(size: 2..20, blank: false, matches: "[a-zA-Z]+")
+        secondName(size: 2..20, blank: false, matches: "[a-zA-Z]+")
+        email(email:true, nullable:false, blank: false, unique: true)
+        password(nullable:false)
 		password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
             if (obj.password != obj.confirmPassword)
                 return 'user.password.dontmatch'
@@ -40,27 +42,30 @@ class User {
 		 *
 		 * @return true if the user is other student
 		 */
-		boolean isStudent() {
-			UserRole.get(this.id, RoleEnum.STUDENT_ROLE.id)
+		boolean isUser() {
+			UserRole.get(this.id, RoleEnum.USER_ROLE.id)
 		  }
 	  
-		Set<Role> getAuthorities() {
-		  UserRole.findAllByUser(this).collect { it.role } as Set
-		}
-	  
-//		def beforeInsert() {
-//		  encodePassword()
-//		}
-//	  
-//		def beforeUpdate() {
-//		  if (isDirty('passWord')) {
+
+
+	Set<Role> getAuthorities() {
+		UserRole.findAllByUser(this).collect { it.role } as Set
+	}
+
+//	def beforeInsert() {
+//		encodePassword()
+//	}
+//
+//	def beforeUpdate() {
+//		if (isDirty('password')) {
 //			encodePassword()
-//		  }
 //		}
-//	  
-//		protected void encodePassword() {
-//		  password = springSecurityService.encodePassword(password)
-//		}
+//	}
+//
+//	protected void encodePassword() {
+//		password = springSecurityService.encodePassword(password)
+//	}
+
 	 
     
     /****** CUSTOM ADDITION ******/
