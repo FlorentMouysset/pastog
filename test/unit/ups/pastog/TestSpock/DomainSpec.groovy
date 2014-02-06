@@ -16,17 +16,19 @@ import ups.pastog.user.User
 class DomainSpec extends Specification {
     @Unroll
     def "test DomainTest"() {
-        setup:
-        def user = new User(name: name, secondName: secondName, email: email, password: password, confirmPassword: confirmPassword)
-        def domaine = new Domain (title: title, description: description, author: user )
-        domaine.validate() == valid
+        expect:
+        def user = new User(name: "name", secondName: "secondName", email: "email", password: "password", confirmPassword: "confirmPassword")
+        def dom = new Domain (title: title, description: description, author: user )
+        (dom.save() != null )== valide
 
         where:
-
-        name    | secondName   | email            | password     | confirmPassword   | title | description   |  valid
-        "Name"  | "secondName" |"email@email.com" | "password"   |"confirmpassword"  |"title"| "description" | false
-
-    }
+        title | description   | valide
+        "title1"| "description1"| true
+        "" | "description"| false
+        "title2"| ""| false
+        ""| ""| false
+        ""| ""| false
+        }
     /*def setup() {
 
    }*/
