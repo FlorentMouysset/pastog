@@ -29,9 +29,4 @@ class LoginSpec extends GebReportingSpec {
 		then:
 		at CreateUserPage
 	}
-	
-	
-	
-	
-	
 }
