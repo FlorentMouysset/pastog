@@ -2,6 +2,7 @@ package ups.pastog
 
 import sun.rmi.runtime.Log
 import ups.pastog.user.User
+import pastog_.DomainService.*
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -67,6 +68,8 @@ class DomainController {
             }
             else
             {
+                def user  = User.findByName("admin")
+
                 domainInstance.author =  user
                 domainInstance.save()
             }

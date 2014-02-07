@@ -12,6 +12,6 @@ class Domain {
     static constraints = {
 		title(unique: true, blank: false)
         description(blank: false, unique : true)
-		author(unique : true, blank : false)
+		author(blank : false)
     }
 }
