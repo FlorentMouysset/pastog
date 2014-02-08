@@ -11,7 +11,7 @@ class User {
  String confirmPassword
  
  // transients
- static transients = ['password', 'confirmPassword']
+// static transients = ['password', 'confirmPassword']
  
     static constraints = {
   
