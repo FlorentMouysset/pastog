@@ -1,8 +1,7 @@
 package pages
 
-import geb.Page
 
-class CreateUserPage extends Page {
+class CreateUserPage extends GenericPage {
 
 	static url = "/pastog_/user/register"
 	
@@ -16,7 +15,8 @@ class CreateUserPage extends Page {
 		password{ $("input", id:"password") }
 		confirmPassword{ $("input", id:"confirmPassword") }
 		email{ $("input", id:"email") }
-		createUserButton(to: DomainListPage) { submitButton() }
+		//createUserButton(to: DomainListPage) { submitButton() }
+		createUserButton { submitButton() }
 	}
 
 }

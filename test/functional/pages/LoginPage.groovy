@@ -1,9 +1,7 @@
 package pages
 
-import geb.Module
-import geb.Page
 
-class LoginPage extends Page {
+class LoginPage extends GenericPage {
 	//not : "pastog_" "/" "" "pastog_/"
 	static url = "/pastog_"
 	

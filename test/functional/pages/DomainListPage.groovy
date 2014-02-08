@@ -1,15 +1,14 @@
 package pages
 
-import geb.Page
 
-class DomainListPage extends Page {
+class DomainListPage extends GenericPage {
 
 	static at = {
 		title == "Domain List"
 	}
 	
-	//static content = {
-	//	createButton(to: ShowPage) { create() }
-	//}
+	static content = {
+		logoutLink(to: LoginPage) { $("a", text: "Logout") }
+	}
 
 }
