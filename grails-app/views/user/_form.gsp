@@ -1,6 +1,5 @@
 <%@ page import="ups.pastog.user.User" %>
 
-
 <table>
   
   <tr>
@@ -44,13 +43,20 @@
   </tr>
    <tr>
   <td>
-  <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'Confirmation passWord', 'error')} required">
-	<label for="Confirmation passWord">
-		<g:message code="user.passWord.label" default="Confirmation PassWord" />
+  <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'confirmPassword', 'error')} required">
+	<label for="confirmPassword">
+		<g:message code="user.confirmPassword.label" default="confirmPassword" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="password" name="passWord" required="" />
+	<g:field type="password" name="confirmPassword" required="" />
 </div>
+<%--
+<g:if test="${}">
+    <div class="errors">
+       <g:renderErrors bean="${userInstance}" field="passWord" as="list" />
+    </div>
+</g:if>
+--%>
   </td>
   </tr>
 </table>
