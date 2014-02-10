@@ -68,9 +68,9 @@ class DomainController {
             }
             else
             {
-                def user  = User.findByName("admin")
+                /*def user  = User.findByName("admin")*/
 
-                domainInstance.author =  user
+                domainInstance.author =  session.user
                 domainInstance.save()
             }
         }

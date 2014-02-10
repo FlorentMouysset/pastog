@@ -31,10 +31,14 @@ class SubDomainController {
             notFound()
             return
         }
-        User user = new User(name: "admin", secondName: "admin", email: "admin@hotmail.fr" , passWord: "aaa")
-        user.save()
-        subDomainInstance.user = user
-        subDomainInstance.save()
+        /*User user = new User(name: "admin", secondName: "admin", email: "admin@hotmail.fr" , passWord: "aaa")
+        user.save()*/
+        if(session.user != null)
+        {
+            subDomainInstance.user = session.user
+            subDomainInstance.save()
+        }
+
 
         if (subDomainInstance.hasErrors()) {
             respond subDomainInstance.errors, view:'create'
