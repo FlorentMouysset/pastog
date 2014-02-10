@@ -43,6 +43,14 @@ class DomainController {
 
     }*/
 
+    def newSubDomain(Domain domainInstance)
+    {
+        def domain = session["domain"]
+        session["domain"] = domainInstance
+
+        redirect(controller: "SubDomain", action: "create")
+    }
+
     @Transactional
     def save(Domain domainInstance) {
         if (domainInstance == null) {
