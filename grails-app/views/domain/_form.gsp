@@ -3,16 +3,18 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'title', 'error')} required">
-	<label for="title">
-		<g:message code="domain.title.label" default="Title" />
+	<tr>
+	<td><label for="titre">
+		<h5><g:message code="Titre" default="Titre" /></h5>
 		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="title" required="" value="${domainInstance?.title}"/>
+	</label></td>
+	<td><g:textField name="titre" required="" value="${domainInstance?.title}"/></td>
+	</tr>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'description', 'error')} required">
 	<label for="description">
-		<g:message code="domain.description.label" default="Description" />
+		<h5><g:message code="domain.description.label" default="Description" /></h5>
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="description" required="" value="${domainInstance?.description}"/>
