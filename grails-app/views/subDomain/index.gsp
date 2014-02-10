@@ -23,7 +23,6 @@
 			<table>
 			<thead>
 					<tr>
-
 						<th><g:message code="subDomain.domaine.label" default="Domaine" /></th>
 
 					</tr>
