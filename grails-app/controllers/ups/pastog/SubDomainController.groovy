@@ -30,6 +30,16 @@ class SubDomainController {
             return
         }
 
+        if(session.domain == null)
+        {
+            flash.message = "domain null"
+            redirect(controller: "SubDomain", action: "create")
+        }
+
+
+        subDomainInstance.domaine = session.domain
+        subDomainInstance.save()
+
         if (subDomainInstance.hasErrors()) {
             respond subDomainInstance.errors, view:'create'
             return
