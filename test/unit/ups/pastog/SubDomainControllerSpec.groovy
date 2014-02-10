@@ -15,7 +15,7 @@ class SubDomainControllerSpec extends Specification {
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
         params["label"] = "IVVQ"
-        params["user"] = new User(name: "mehdi", secondName:"but", email: "mehdi@hotmail.fr",passWord:"azerty")
+        params["domaine"] = new Domain (title: "Master DL", description: "Developpement logicielle", author: new User(name: "name", secondName: "secondName", email: "email", password: "password", confirmPassword: "confirmPassword") )
     }
 
     void "Test the index action returns the correct model"() {
