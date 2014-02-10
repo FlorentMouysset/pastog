@@ -4,13 +4,13 @@ import ups.pastog.user.User;
 
 class SubDomain {
 
-	User user
     String label
-	static belongsTo = Domain
+    static  belongsTo = [domaine:Domain]
 
-	static hasMany=[ virtualEvent: VirtualEvent,  physicalEvent: PhysicalEvent ]
-	
-	    static constraints = {
+    static hasMany=[ virtualEvent: VirtualEvent,  physicalEvent: PhysicalEvent ]
 
+    static constraints = {
+        label(blank: false, unique : true)
+        domaine( blank : false)
     }
 }

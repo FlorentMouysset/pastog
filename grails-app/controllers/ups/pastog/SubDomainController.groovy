@@ -4,7 +4,6 @@ package ups.pastog
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import ups.pastog.user.User
 
 @Transactional(readOnly = true)
 class SubDomainController {
@@ -26,11 +25,11 @@ class SubDomainController {
 
     @Transactional
     def save(SubDomain subDomainInstance) {
-
         if (subDomainInstance == null) {
             notFound()
             return
         }
+
         /*User user = new User(name: "admin", secondName: "admin", email: "admin@hotmail.fr" , passWord: "aaa")
         user.save()*/
         if(session.user != null)
