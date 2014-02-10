@@ -23,7 +23,9 @@
 			<table>
 			<thead>
 					<tr>
-						<g:sortableColumn property="label" title="${message(code: 'subDomain.label.label', default: 'Label')}" />
+
+						<th><g:message code="subDomain.domaine.label" default="Domaine" /></th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -31,7 +33,9 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${subDomainInstance.id}">${fieldValue(bean: subDomainInstance, field: "label")}</g:link></td>
-					
+	
+						<td>${fieldValue(bean: subDomainInstance, field: "domaine")}</td>
+
 					</tr>
 				</g:each>
 				</tbody>

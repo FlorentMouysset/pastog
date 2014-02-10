@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${subDomainInstance?.domaine}">
+				<li class="fieldcontain">
+					<span id="domaine-label" class="property-label"><g:message code="subDomain.domaine.label" default="Domaine" /></span>
+					
+						<span class="property-value" aria-labelledby="domaine-label"><g:link controller="domain" action="show" id="${subDomainInstance?.domaine?.id}">${subDomainInstance?.domaine?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${subDomainInstance?.physicalEvent}">
 				<li class="fieldcontain">
 					<span id="physicalEvent-label" class="property-label"><g:message code="subDomain.physicalEvent.label" default="Physical Event" /></span>
@@ -39,15 +48,6 @@
 						<g:each in="${subDomainInstance.physicalEvent}" var="p">
 						<span class="property-value" aria-labelledby="physicalEvent-label"><g:link controller="physicalEvent" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${subDomainInstance?.user}">
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="subDomain.user.label" default="User" /></span>
-					
-						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${subDomainInstance?.user?.id}">${subDomainInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
