@@ -30,14 +30,15 @@ class SubDomainController {
             return
         }
 
-        /*User user = new User(name: "admin", secondName: "admin", email: "admin@hotmail.fr" , passWord: "aaa")
-        user.save()*/
-        if(session.user != null)
+        if(session.domain == null)
         {
-            subDomainInstance.user = session.user
-            subDomainInstance.save()
+            flash.message = "domain null"
+            redirect(controller: "SubDomain", action: "create")
         }
 
+
+        subDomainInstance.domaine = session.domain
+        subDomainInstance.save()
 
         if (subDomainInstance.hasErrors()) {
             respond subDomainInstance.errors, view:'create'
