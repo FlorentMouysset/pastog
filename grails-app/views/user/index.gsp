@@ -1,4 +1,3 @@
-
 <%@ page import="ups.pastog.user.User" %>
 <!DOCTYPE html>
 <html>
@@ -23,29 +22,29 @@
 			<table>
 			<thead>
 					<tr>
-					
+
 						<g:sortableColumn property="name" title="${message(code: 'user.name.label', default: 'Name')}" />
-					
+
 						<g:sortableColumn property="secondName" title="${message(code: 'user.secondName.label', default: 'SecondName')}" />
-					
+
 						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
-					
+
 						<g:sortableColumn property="passWord" title="${message(code: 'user.passWord.label', default: 'PassWord')}" />
-						
+
 						<g:sortableColumn property="confirmPassWord" title="${message(code: 'user.confirmpassWord.label', default: 'ConfirmPassWord')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+
 						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "name")}</g:link></td>
-					
+
 						<td>${fieldValue(bean: userInstance, field: "secondName")}</td>
-					
+
 						<td>${fieldValue(bean: userInstance, field: "email")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>

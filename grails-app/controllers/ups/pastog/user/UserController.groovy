@@ -11,6 +11,7 @@ import ups.pastog.user.UserRole;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -26,7 +27,7 @@ class UserController {
 
     def create() {
          [userInstance: new User(params)]
-		 
+
     }
 
     @Transactional
@@ -51,11 +52,11 @@ class UserController {
             //redirect(action: "list")
             return
         }
-		
+
 
         [userInstance: userInstance]
     }
-	
+
 
     @Transactional
     def update(User userInstance) {
@@ -134,7 +135,7 @@ class UserController {
         if (request.method == 'POST') {
            
 			  def u = User.findByName(params.name)
-			
+
             if (u) {
                 // username and password match -> log in
                 session.user = u
@@ -154,4 +155,3 @@ class UserController {
         redirect(controller:'logout')
     }
 }
-

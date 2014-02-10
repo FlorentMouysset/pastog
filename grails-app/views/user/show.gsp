@@ -1,4 +1,3 @@
-
 <%@ page import="ups.pastog.user.User" %>
 <!DOCTYPE html>
 <html>
@@ -22,34 +21,34 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list user">
-			
+
 				<g:if test="${userInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="user.name.label" default="Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${userInstance}" field="name"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${userInstance?.secondName}">
 				<li class="fieldcontain">
 					<span id="secondName-label" class="property-label"><g:message code="user.secondName.label" default="Second Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="secondName-label"><g:fieldValue bean="${userInstance}" field="secondName"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${userInstance?.email}">
 				<li class="fieldcontain">
 					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
-					
+
 						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 			</ol>
 			<g:form url="[resource:userInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
