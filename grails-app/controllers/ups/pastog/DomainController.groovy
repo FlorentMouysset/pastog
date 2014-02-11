@@ -43,23 +43,28 @@ class DomainController {
 
     }*/
 
+    def newSubDomain(Domain domainInstance)
+    {
+        if (domainInstance == null) {
+            flash.message = "instance non null"
+            redirect(view:'create')
+        }
+        else{
+            def domain = session["domain"]
+            session.domain = domainInstance
+            assert  domainInstance == session.domain
+
+            redirect(controller: "SubDomain", action: "create")
+        }
+
+    }
+
     @Transactional
     def save(Domain domainInstance) {
         if (domainInstance == null) {
             notFound()
             return
         }
-
-        /*User user  = User.findByName("admin")
-        if(user == null){
-            notFound()
-            return
-        }*/
-        /*if(user.name != session.user.name)
-        {
-            flash.message = "Fonction réservée à l'administrateur"
-            redirect(view:'create')
-        }*/
         if(session.user != null && session.user.name != null){
             if(session.user.name != "admin")
             {
@@ -68,9 +73,9 @@ class DomainController {
             }
             else
             {
-                def user  = User.findByName("admin")
+                /*def user  = User.findByName("admin")*/
 
-                domainInstance.author =  user
+                domainInstance.author =  session.user
                 domainInstance.save()
             }
         }

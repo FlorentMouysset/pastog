@@ -18,11 +18,19 @@
 	<g:datePicker name="dateOfStart" precision="day"  value="${eventBaseInstance?.dateOfStart}"  />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'description', 'error')} ">
+	<label for="description">
+		<g:message code="eventBase.description.label" default="Description" />
+		
+	</label>
+	<g:textField name="description" value="${eventBaseInstance?.description}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'participants', 'error')} ">
 	<label for="participants">
 		<g:message code="eventBase.participants.label" default="Participants" />
 		
 	</label>
-	<g:select name="participants" from="${ups.pastog.User.list()}" multiple="multiple" optionKey="id" size="5" value="${eventBaseInstance?.participants*.id}" class="many-to-many"/>
+	<g:select name="participants" from="${ups.pastog.user.User.list()}" multiple="multiple" optionKey="id" size="5" value="${eventBaseInstance?.participants*.id}" class="many-to-many"/>
 </div>
 

@@ -23,4 +23,32 @@
 			<table>
 			<thead>
 					<tr>
+						<g:sortableColumn property="dateOfEnd" title="${message(code: 'eventBase.dateOfEnd.label', default: 'Date Of End')}" />
 					
+						<g:sortableColumn property="dateOfStart" title="${message(code: 'eventBase.dateOfStart.label', default: 'Date Of Start')}" />
+					
+						<g:sortableColumn property="description" title="${message(code: 'eventBase.description.label', default: 'Description')}" />
+					
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${eventBaseInstanceList}" status="i" var="eventBaseInstance">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td><g:link action="show" id="${eventBaseInstance.id}">${fieldValue(bean: eventBaseInstance, field: "dateOfEnd")}</g:link></td>
+					
+						<td><g:formatDate date="${eventBaseInstance.dateOfStart}" /></td>
+					
+						<td>${fieldValue(bean: eventBaseInstance, field: "description")}</td>
+					
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
+			<div class="pagination">
+				<g:paginate total="${eventBaseInstanceCount ?: 0}" />
+			</div>
+		</div>
+	</body>
+</html>
+
