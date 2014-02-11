@@ -11,7 +11,7 @@
 		
 		<div class="nav" role="navigation">
 			<ul>
-                <li><a class="Creer un virtual event" href="${createLink(uri: '/virtualEvent/create/')}"><g:message code="Creer un virtual event"/></a></li>
+                <li><a class="Creer un virtual event" href="${createLink(uri: '/eventBase/create/')}"><g:message code="Creer un virtual event"/></a></li>
                 <li><a class="Visualiser la liste des sous domaines" href="${createLink(uri: '/subDomain/show/')}"><g:message code="Visualiser la liste des sous domaines"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="Ajout d'un nouveau domaine " args="[entityName]" /></g:link></li>
 			</ul>

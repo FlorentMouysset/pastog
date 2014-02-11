@@ -1,8 +1,10 @@
-package ups.pastog
-import spock.lang.Specification
-import ups.pastog.VirtualEvent
-import grails.test.mixin.TestFor
+package ups.pastog.TestSpock
 
+import grails.test.mixin.TestFor
+import spock.lang.Specification
+import ups.pastog.EventBase
+import ups.pastog.Question
+import ups.pastog.VirtualEvent
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
@@ -20,9 +22,12 @@ class VirtualEventSpec extends Specification {
     void "test virtual event"() {
         expect:
         def eventBase = Mock(EventBase)
-        VirtualEvent virtEvent = new VirtualEvent(eventBase)
+        def question1 = Mock(Question)
+        def question2 = Mock(Question)
 
-        (virtEvent.save() != null )== valide
+        def v = new VirtualEvent(eventBase : eventBase, questions: [question1, question2])
+
+        (v.save() != null )== true
 
     }
 }
