@@ -123,7 +123,7 @@ class UserController {
                 return [user:u]
             } else {
 	            // validate/save ok, store user in session, redirect to classDomain
-				UserRole.create(u, role, true)
+				//UserRole.create(u, role, true)
 				flash.message="user.created"
 	            session.user = u
 	            redirect(controller:'domain')
