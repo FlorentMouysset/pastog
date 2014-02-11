@@ -76,7 +76,7 @@ def daoAuthenticationProvider
 
 			UserRole.create user, admin
 
-			flash.message = message(code: 'app.user.created')
+			flash.message = message(code: 'ups.pastog.user.User.created')
 			redirect(controller: 'domain', action: 'list')
 		} else {
 			render(view: "../user/create", model: [userInstance: urc])

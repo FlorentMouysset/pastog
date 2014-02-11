@@ -38,7 +38,7 @@ class UserController {
             return
         }
                 
-                def userRole = Role.findByAuthority('ROLE_ADMIN')
+                def userRole = Role.findByAuthority("STUDENT_ROLE")
                 UserRole.create userInstance, userRole
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
@@ -112,18 +112,22 @@ class UserController {
     }
 	   def register = {
         // new user posts his registration details
+		   Role role=  new Role(authority: "STUDENT_ROLE")
         if (request.method == 'POST') {
             // create domain object and assign parameters using data binding
             def u = new User(params)
+			 
              if (! u.save()) {
                 // validation failed, render registration page again
 			   flash.error="user.creation.failed"
                 return [user:u]
             } else {
-                // validate/save ok, store user in session, redirect to classDomain
-			flash.message="user.created"
-                session.user = u
-                redirect(controller:'domain')
+	            // validate/save ok, store user in session, redirect to classDomain
+				UserRole.create(u, role, true)
+				flash.message="user.created"
+	            session.user = u
+	            redirect(controller:'domain')
+				
             }
         } else if (session.user) {
             // don't allow registration while user is logged in
@@ -134,7 +138,7 @@ class UserController {
     def login = {
         if (request.method == 'POST') {
            
-			  def u = User.findByName(params.name)
+			  def u = User.findByNameAndPassword(params.name, params.password)
 
             if (u) {
                 // username and password match -> log in

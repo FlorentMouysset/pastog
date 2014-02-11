@@ -3,7 +3,9 @@ package ups.pastog
 
 
 import static org.springframework.http.HttpStatus.*
+
 import grails.transaction.Transactional
+import ups.pastog.user.User
 
 @Transactional(readOnly = true)
 class QuestionController {
@@ -14,14 +16,46 @@ class QuestionController {
         params.max = Math.min(max ?: 10, 100)
         respond Question.list(params), model:[questionInstanceCount: Question.count()]
     }
-
-    def show(Question questionInstance) {
+	
+	
+	
+	static defaultAction = "list"
+	@Transactional
+	def list(boolean userOnly) {
+			User user = (User) springSecurityService.currentUser
+	
+			if (!springSecurityService.isLoggedIn()) {
+				userOnly = false
+			}
+	
+			def QuestionList = AllService.listQuestion(user, userOnly)
+			def totalCount = QuestionList.size()
+	
+			int offset = (params.offset ?: 0) as Integer
+			int max = (params.max ?: 4) as Integer
+	
+			QuestionList = QuestionList.subList(
+					offset,
+					(offset + max < totalCount) ? (offset + max) : totalCount
+			)
+	
+			return [
+					QuestionList: QuestionList,
+					totalCount: totalCount,
+					user: user,
+					userOnly: userOnly
+			]
+		}
+   
+		
+	def show(Question questionInstance) {
         respond questionInstance
     }
 
     def create() {
         respond new Question(params)
     }
+
 
     @Transactional
     def save(Question questionInstance) {
