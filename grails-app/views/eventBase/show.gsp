@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${eventBaseInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="eventBase.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${eventBaseInstance}" field="description"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${eventBaseInstance?.participants}">
 				<li class="fieldcontain">
 					<span id="participants-label" class="property-label"><g:message code="eventBase.participants.label" default="Participants" /></span>

@@ -28,6 +28,8 @@
 					
 						<g:sortableColumn property="dateOfStart" title="${message(code: 'eventBase.dateOfStart.label', default: 'Date Of Start')}" />
 					
+						<g:sortableColumn property="description" title="${message(code: 'eventBase.description.label', default: 'Description')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -37,6 +39,8 @@
 						<td><g:link action="show" id="${eventBaseInstance.id}">${fieldValue(bean: eventBaseInstance, field: "dateOfEnd")}</g:link></td>
 					
 						<td><g:formatDate date="${eventBaseInstance.dateOfStart}" /></td>
+					
+						<td>${fieldValue(bean: eventBaseInstance, field: "description")}</td>
 					
 					</tr>
 				</g:each>
