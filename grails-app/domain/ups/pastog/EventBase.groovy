@@ -6,9 +6,10 @@ class EventBase {
 	
 	Date dateOfStart
 	Date dateOfEnd
-	
-	static BelongTo = User
+	String description
+	static BelongTo = [user:User]
 	static hasMany=[ participants: User]
     static constraints = {
+
     }
 }
