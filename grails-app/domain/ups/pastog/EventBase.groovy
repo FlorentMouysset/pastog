@@ -7,12 +7,12 @@ class EventBase {
     String description
 	Date dateOfStart
 	Date dateOfEnd
+    SubDomain subdomain
     static BelongTo = [user:User]
 	static hasMany=[ participants: User]
-    SubDomain subdomain
     static constraints = {
-        dateOfStart(nullable: false, max:(dateOfEnd))
-        dateOfEnd(nullable: false, min:(dateOfStart))
+
+        dateOfStart
         description(nullable: false)
     }
 }
