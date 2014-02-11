@@ -5,5 +5,6 @@ class PhysicalEvent {
 	EventBase eventBase
 	
     static constraints = {
+       place blank: false
     }
 }

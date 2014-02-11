@@ -23,7 +23,6 @@
 			<table>
 			<thead>
 					<tr>
-					
 						<g:sortableColumn property="dateOfEnd" title="${message(code: 'eventBase.dateOfEnd.label', default: 'Date Of End')}" />
 					
 						<g:sortableColumn property="dateOfStart" title="${message(code: 'eventBase.dateOfStart.label', default: 'Date Of Start')}" />
@@ -52,3 +51,4 @@
 		</div>
 	</body>
 </html>
+

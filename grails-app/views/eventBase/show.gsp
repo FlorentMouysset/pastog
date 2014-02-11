@@ -22,7 +22,6 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list eventBase">
-			
 				<g:if test="${eventBaseInstance?.dateOfEnd}">
 				<li class="fieldcontain">
 					<span id="dateOfEnd-label" class="property-label"><g:message code="eventBase.dateOfEnd.label" default="Date Of End" /></span>
@@ -71,3 +70,4 @@
 		</div>
 	</body>
 </html>
+
