@@ -16,13 +16,15 @@ class SubDomainSpec extends Specification {
     @Unroll
     def "test SubDomainTest"() {
         expect:
-        def dom = new Domain (title: "Master DL", description: "Developpement logiciel", author: new User(name: "name", secondName: "secondName", email: "email", password: "password", confirmPassword: "confirmPassword") )
-        def subdom = new SubDomain(label:label ,domaine: dom)
+        //def dom = new Domain (title: "Master DL", description: "Developpement logiciel", author: new User(name: "name", secondName: "secondName", email: "email", password: "password", confirmPassword: "confirmPassword") )
+        def dom = Mock(Domain)
+        def subdom = new SubDomain(label:label ,domaine:dom)
         (subdom.save() != null )== valide
 
         where:
         label   | valide
        "IVVQ"   | true
+        "VE"    | true
         ""      | false
     }
 

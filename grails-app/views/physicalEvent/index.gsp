@@ -24,9 +24,9 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="physicalEvent.eventBase.label" default="Event Base" /></th>
-					
 						<g:sortableColumn property="place" title="${message(code: 'physicalEvent.place.label', default: 'Place')}" />
+					
+						<th><g:message code="physicalEvent.eventBase.label" default="Event Base" /></th>
 					
 					</tr>
 				</thead>
@@ -34,9 +34,9 @@
 				<g:each in="${physicalEventInstanceList}" status="i" var="physicalEventInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${physicalEventInstance.id}">${fieldValue(bean: physicalEventInstance, field: "eventBase")}</g:link></td>
+						<td><g:link action="show" id="${physicalEventInstance.id}">${fieldValue(bean: physicalEventInstance, field: "place")}</g:link></td>
 					
-						<td>${fieldValue(bean: physicalEventInstance, field: "place")}</td>
+						<td>${fieldValue(bean: physicalEventInstance, field: "eventBase")}</td>
 					
 					</tr>
 				</g:each>

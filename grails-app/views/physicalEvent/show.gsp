@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list physicalEvent">
 			
-				<g:if test="${physicalEventInstance?.eventBase}">
-				<li class="fieldcontain">
-					<span id="eventBase-label" class="property-label"><g:message code="physicalEvent.eventBase.label" default="Event Base" /></span>
-					
-						<span class="property-value" aria-labelledby="eventBase-label"><g:link controller="eventBase" action="show" id="${physicalEventInstance?.eventBase?.id}">${physicalEventInstance?.eventBase?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${physicalEventInstance?.place}">
 				<li class="fieldcontain">
 					<span id="place-label" class="property-label"><g:message code="physicalEvent.place.label" default="Place" /></span>
 					
 						<span class="property-value" aria-labelledby="place-label"><g:fieldValue bean="${physicalEventInstance}" field="place"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${physicalEventInstance?.eventBase}">
+				<li class="fieldcontain">
+					<span id="eventBase-label" class="property-label"><g:message code="physicalEvent.eventBase.label" default="Event Base" /></span>
+					
+						<span class="property-value" aria-labelledby="eventBase-label"><g:link controller="eventBase" action="show" id="${physicalEventInstance?.eventBase?.id}">${physicalEventInstance?.eventBase?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

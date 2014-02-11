@@ -22,7 +22,6 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list eventBase">
-			
 				<g:if test="${eventBaseInstance?.dateOfEnd}">
 				<li class="fieldcontain">
 					<span id="dateOfEnd-label" class="property-label"><g:message code="eventBase.dateOfEnd.label" default="Date Of End" /></span>
@@ -37,6 +36,15 @@
 					<span id="dateOfStart-label" class="property-label"><g:message code="eventBase.dateOfStart.label" default="Date Of Start" /></span>
 					
 						<span class="property-value" aria-labelledby="dateOfStart-label"><g:formatDate date="${eventBaseInstance?.dateOfStart}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${eventBaseInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="eventBase.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${eventBaseInstance}" field="description"/></span>
 					
 				</li>
 				</g:if>
@@ -62,3 +70,4 @@
 		</div>
 	</body>
 </html>
+

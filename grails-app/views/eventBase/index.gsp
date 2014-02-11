@@ -23,10 +23,11 @@
 			<table>
 			<thead>
 					<tr>
-					
 						<g:sortableColumn property="dateOfEnd" title="${message(code: 'eventBase.dateOfEnd.label', default: 'Date Of End')}" />
 					
 						<g:sortableColumn property="dateOfStart" title="${message(code: 'eventBase.dateOfStart.label', default: 'Date Of Start')}" />
+					
+						<g:sortableColumn property="description" title="${message(code: 'eventBase.description.label', default: 'Description')}" />
 					
 					</tr>
 				</thead>
@@ -38,6 +39,8 @@
 					
 						<td><g:formatDate date="${eventBaseInstance.dateOfStart}" /></td>
 					
+						<td>${fieldValue(bean: eventBaseInstance, field: "description")}</td>
+					
 					</tr>
 				</g:each>
 				</tbody>
@@ -48,3 +51,4 @@
 		</div>
 	</body>
 </html>
+
