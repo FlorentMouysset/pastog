@@ -43,9 +43,27 @@ class DomainController {
 
     }*/
 
-    def newSubDomain(Domain domainInstance)
+    def newSubDomain(long id)
     {
-        if (domainInstance == null) {
+
+        def domain = session["domain"]
+        def domainInstance = Domain.findById(id)
+        redirect(controller: "subDomain", action: "create", params: params.id)
+
+        /*if(domainInstance == null)
+        {
+            flash.message = "domainInstance null"
+            redirect(controller: "domain", action: "create")
+        }*/
+        /*session["domain"] = domainInstance
+        assert  domainInstance == session.domain
+        if(session.domain == null)
+        {
+            flash.message = "session domain null"
+            redirect(action: "create")
+        }*/
+
+        /*if (domainInstance == null) {
             flash.message = "instance non null"
             redirect(view:'create')
         }
@@ -55,12 +73,14 @@ class DomainController {
             assert  domainInstance == session.domain
 
             redirect(controller: "SubDomain", action: "create")
-        }
+        }*/
 
     }
 
     @Transactional
-    def save(Domain domainInstance) {
+    def save() {
+        Domain domainInstance = new Domain()
+        domainInstance.save()
         if (domainInstance == null) {
             notFound()
             return
@@ -76,10 +96,13 @@ class DomainController {
                 /*def user  = User.findByName("admin")*/
 
                 domainInstance.author =  session.user
+
                 domainInstance.save()
             }
         }
-
+        domainInstance.title = params.title
+        domainInstance.description = params.description
+        domainInstance.save()
         //User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
         /*if(!user.save()){
             user = User.findByName("ad")
@@ -87,12 +110,12 @@ class DomainController {
         /*User user = User.findByName("admin")*/
         /*domainInstance.author =  user*/
 
-        if (domainInstance.hasErrors()) {
+        /*if (domainInstance.hasErrors()) {
             respond domainInstance.errors, view:'create'
             return
         }
-
-        domainInstance.save flush:true
+*/
+        domainInstance.save(flush:true)
 
         request.withFormat {
             form {

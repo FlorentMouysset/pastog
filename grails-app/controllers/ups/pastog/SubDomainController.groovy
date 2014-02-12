@@ -8,6 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class SubDomainController {
 
+    def domain_id
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -19,7 +20,8 @@ class SubDomainController {
         respond subDomainInstance
     }
 
-    def create() {
+    def create(Long id) {
+        domain_id = id
         respond new SubDomain(params)
     }
 
@@ -30,15 +32,11 @@ class SubDomainController {
             return
         }
 
-        if(session.domain == null)
-        {
-            flash.message = "domain null"
-            redirect(controller: "SubDomain", action: "create")
-        }
 
-
-        subDomainInstance.domaine = session.domain
+        subDomainInstance.domaine = Domain.findById(domain_id)
         subDomainInstance.save()
+        domain_id = -1
+
 
         if (subDomainInstance.hasErrors()) {
             respond subDomainInstance.errors, view:'create'

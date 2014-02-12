@@ -2,22 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'title', 'error')} required">
-	<tr>
-	<td><label for="titre">
-		<h5><g:message code="Titre" default="Titre" /></h5>
-		<span class="required-indicator">*</span>
-	</label></td>
-	<td><g:textField name="titre" required="" value="${domainInstance?.title}"/></td>
-	</tr>
+<div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'title', 'error')} ">
+    <label for="title">
+        <g:message code="domain.title.label" default="Title" />
+
+    </label>
+    <g:textField name="title" value="${domainInstance?.title}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'description', 'error')} required">
-	<label for="description">
-		<h5><g:message code="domain.description.label" default="Description" /></h5>
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="description" required="" value="${domainInstance?.description}"/>
+
+<div class="fieldcontain ${hasErrors(bean: domainInstance, field: 'description', 'error')} ">
+    <label for="description">
+        <g:message code="domain.description.label" default="Description" />
+
+    </label>
+    <g:textField name="description" value="${domainInstance?.description}"/>
 </div>
 
 
