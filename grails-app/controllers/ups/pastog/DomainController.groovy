@@ -85,37 +85,13 @@ class DomainController {
             notFound()
             return
         }
-        if(session.user != null && session.user.name != null){
-            if(session.user.name != "admin")
-            {
-                flash.message = "Fonction réservée à l'administrateur"
-                redirect(view:'create')
-            }
-            else
-            {
-                /*def user  = User.findByName("admin")*/
 
-                domainInstance.author =  session.user
-
-                domainInstance.save()
-				render(view: "create", model: [domainInstance: domainInstance])
-            }
-        }
+        domainInstance.author =  session.user
         domainInstance.title = params.title
         domainInstance.description = params.description
         domainInstance.save()
-        //User user  = new User(name: "ad", secondName:"ad1", email: "ad@mail.fr",passWord:"123")
-        /*if(!user.save()){
-            user = User.findByName("ad")
-        }*/
-        /*User user = User.findByName("admin")*/
-        /*domainInstance.author =  user*/
+       	 render(view: "index", model: [domainInstance: domainInstance])
 
-        /*if (domainInstance.hasErrors()) {
-            respond domainInstance.errors, view:'create'
-            return
-        }
-*/
         domainInstance.save(flush:true)
 
         request.withFormat {
