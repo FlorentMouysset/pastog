@@ -22,7 +22,7 @@ class PhysicalEventSpec extends Specification {
         (evPhysique.save() != null )== valide
 
         where:
-        place          | valide+
+        place          | valide
         "BU salle 2"   | true
         ""             | false
     }
