@@ -1,7 +1,20 @@
+import groovy.sql.Sql
+
+import ups.pastog.user.Role
+import ups.pastog.user.User
+import ups.pastog.user.UserRole
+
+
 class BootStrap {
 
-    def init = { servletContext ->
-    }
-    def destroy = {
-    }
+
+	//AllService allService
+
+	def init = { servletContext ->
+//		allService.initializeRoles()
+//		allService.inializeUsers()
+	}
+
+	def destroy = {
+	}
 }

@@ -38,7 +38,7 @@ class UserController {
             return
         }
                 
-                def userRole = Role.findByAuthority("STUDENT_ROLE")
+                def userRole = Role.findByAuthority("ADMIN_ROLE")
                 UserRole.create userInstance, userRole
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])

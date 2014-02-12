@@ -77,6 +77,7 @@ class DomainController {
 
                 domainInstance.author =  session.user
                 domainInstance.save()
+				render(view: "create", model: [domainInstance: domainInstance])
             }
         }
 
