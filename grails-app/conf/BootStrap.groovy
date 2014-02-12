@@ -1,4 +1,3 @@
-
 import groovy.sql.Sql
 
 import ups.pastog.user.Role

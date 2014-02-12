@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectSuggestions>
+<declaringtype type="pastog.QuestionServiceSpec">
+<property isActive="true" isStatic="false" name="QuestionService" type="java.lang.Object">
+<doc/>
+</property>
+</declaringtype>
 <declaringtype type="ups.pastog.BootstrapServiceSpec">
 <property isActive="true" isStatic="false" name="BootstrapService" type="java.lang.Object">
 <doc/>

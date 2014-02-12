@@ -147,6 +147,8 @@ controller.login()
 expect:
 controller.getFlash().error != "User not found"
 }
+
+
 def "toSaveUserWithFailedPassword"() {
 given:
 controller.params.name = "toto"
@@ -161,6 +163,9 @@ controller.create()
 expect:
 controller.getFlash().error != "user.password.checking.failed"
 } 
+
+
+
 def "ToSaveUserInDB"() {
         given:
         controller.params.name = "test1"
