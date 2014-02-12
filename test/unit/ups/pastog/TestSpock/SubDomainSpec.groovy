@@ -18,7 +18,7 @@ class SubDomainSpec extends Specification {
         expect:
         //def dom = new Domain (title: "Master DL", description: "Developpement logiciel", author: new User(name: "name", secondName: "secondName", email: "email", password: "password", confirmPassword: "confirmPassword") )
         def dom = Mock(Domain)
-        def subdom = new SubDomain(label:label ,domaine: dom)
+        def subdom = new SubDomain(label:label ,domaine:dom)
         (subdom.save() != null )== valide
 
         where:

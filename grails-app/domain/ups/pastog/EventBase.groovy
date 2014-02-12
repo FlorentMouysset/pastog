@@ -14,12 +14,11 @@ class EventBase {
 	static hasMany=[ participants: User]
     static constraints = {
 
-
-        description(nullable: false)
-        dateOfEnd(validator: { val, obj ->
+        description(blank: false)
+        dateOfEnd(blank: false,validator: { val, obj ->
             val?.after(obj.dateOfStart)
         })
-        dateOfStart(validator: { val, obj ->
+        dateOfStart(blank: false,validator: { val, obj ->
             val?.before(obj.dateOfEnd)
         })
     }

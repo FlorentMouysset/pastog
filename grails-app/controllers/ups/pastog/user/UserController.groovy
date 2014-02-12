@@ -120,11 +120,13 @@ class UserController {
                 flash.error="user.creation.failed"
                 return [user:u]
             } else {
-                // validate/save ok, store user in session, redirect to classDomain
-                flash.message="user.created"
-                session.user = u
-                redirect(controller:'domain')
-            }
+
+	            // validate/save ok, store user in session, redirect to classDomain
+				//UserRole.create(u, role, true)
+				flash.message="user.created"
+	            session.user = u
+	            redirect(controller:'domain')
+				            }
         } else if (session.user) {
             // don't allow registration while user is logged in
             redirect(controller:'domain')
