@@ -20,7 +20,7 @@ class PhysicalEventController {
     }
 
     def create() {
-        respond new PhysicalEvent(new EventBase(description:params.description,dateOfStart:params.dateOfStart,dateOfEnd:params.dateOfEnd,author:session.user),place:params.place)
+        respond new PhysicalEvent(params)
     }
 
     @Transactional

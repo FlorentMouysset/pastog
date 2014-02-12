@@ -4,6 +4,7 @@ package ups.pastog
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import ups.pastog.user.User
 
 @Transactional(readOnly = true)
 class SubDomainController {
@@ -31,9 +32,8 @@ class SubDomainController {
             notFound()
             return
         }
-
-
-        subDomainInstance.domaine = Domain.findById(domain_id)
+		
+	     subDomainInstance.domaine = domain
         subDomainInstance.save()
         domain_id = -1
 

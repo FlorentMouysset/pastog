@@ -38,10 +38,11 @@ class UserController {
             return
         }
                 
-                def userRole = Role.findByAuthority("ADMIN_ROLE")
+                def userRole = Role.findByAuthority("STUDENT_ROLE")
                 UserRole.create userInstance, userRole
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+		userInstance.save()
         redirect(controller: "domain")
     }
 
@@ -123,6 +124,7 @@ class UserController {
 
 	            // validate/save ok, store user in session, redirect to classDomain
 				//UserRole.create(u, role, true)
+			    u.save()
 				flash.message="user.created"
 	            session.user = u
 	            redirect(controller:'domain')
