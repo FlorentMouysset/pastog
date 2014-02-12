@@ -8,13 +8,10 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-domain" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                <li><g:link action="newSubDomain" params= "[id : domainInstance.description ]"><g:message code="New Subdomain" args="[entityName]" /></g:link></li>
+				<li><a class="home" href="${createLink(uri: '/domain')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="Créer un sous domaine" href="${createLink(uri: '/subDomain/create/')}"><g:message code="Ajout d'un sous domaine"/></a></li>
 			</ul>
 		</div>
 
@@ -39,15 +36,6 @@
 					<span id="description-label" class="property-label"><g:message code="domain.description.label" default="Description" /></span>
 					
 						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${domainInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${domainInstance?.author}">
-				<li class="fieldcontain">
-					<span id="author-label" class="property-label"><g:message code="domain.author.label" default="Author" /></span>
-					
-						<span class="property-value" aria-labelledby="author-label"><g:link controller="user" action="show" id="${domainInstance?.author?.id}">${domainInstance?.author?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
