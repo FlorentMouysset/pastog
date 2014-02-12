@@ -23,7 +23,7 @@
 			</g:if>
 			<ol class="property-list question">
 			
-				<g:if test="${questionInstance?.enunciated}">
+	   		<g:if test="${questionInstance?.enunciated}">
 				<li class="fieldcontain">
 					<span id="enunciated-label" class="property-label"><g:message code="question.enunciated.label" default="Enunciated" /></span>
 					
@@ -37,7 +37,7 @@
 					<span id="reponse-label" class="property-label"><g:message code="question.reponse.label" default="Reponse" /></span>
 					
 						<g:each in="${questionInstance.reponse}" var="r">
-						<span class="property-value" aria-labelledby="reponse-label"><g:link controller="response" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="reponse-label"><g:link controller="response" action="list" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

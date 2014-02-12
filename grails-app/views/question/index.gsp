@@ -25,7 +25,6 @@
 					<tr>
 					
 						<g:sortableColumn property="enunciated" title="${message(code: 'question.enunciated.label', default: 'Enunciated')}" />
-					
 						<th><g:message code="question.user.label" default="User" /></th>
 					
 					</tr>

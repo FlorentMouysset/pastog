@@ -22,6 +22,16 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list eventBase">
+			
+				<g:if test="${eventBaseInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="eventBase.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${eventBaseInstance}" field="description"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${eventBaseInstance?.dateOfEnd}">
 				<li class="fieldcontain">
 					<span id="dateOfEnd-label" class="property-label"><g:message code="eventBase.dateOfEnd.label" default="Date Of End" /></span>
@@ -40,15 +50,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${eventBaseInstance?.description}">
-				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="eventBase.description.label" default="Description" /></span>
-					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${eventBaseInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${eventBaseInstance?.participants}">
 				<li class="fieldcontain">
 					<span id="participants-label" class="property-label"><g:message code="eventBase.participants.label" default="Participants" /></span>
@@ -56,6 +57,15 @@
 						<g:each in="${eventBaseInstance.participants}" var="p">
 						<span class="property-value" aria-labelledby="participants-label"><g:link controller="user" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${eventBaseInstance?.subdomain}">
+				<li class="fieldcontain">
+					<span id="subdomain-label" class="property-label"><g:message code="eventBase.subdomain.label" default="Subdomain" /></span>
+					
+						<span class="property-value" aria-labelledby="subdomain-label"><g:link controller="subDomain" action="show" id="${eventBaseInstance?.subdomain?.id}">${eventBaseInstance?.subdomain?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -70,4 +80,3 @@
 		</div>
 	</body>
 </html>
-

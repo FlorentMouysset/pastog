@@ -21,6 +21,11 @@ def "user constraints"() {
 	setup:
 	def user = new User(name: name,secondName: secondName, email: email, password: password, confirmPassword: confirmPassword)
 	
+	//	user.validate()
+	//	
+	//   expect:
+	//   
+	//   user.hasErrors() == !valid
 	 user.validate() == valid
 
 	
@@ -40,7 +45,8 @@ def "user constraints"() {
 	 "Name"                    | "secondName"              | ""                | "password"        |"confirmpassword"    | false
 	 "Name"                    | "secondName"              | null              | "password"        |""                   | false
 	 "Name"                    | "secondName"              | "email@email.com" | ""                |"confirmpassword"    | false
-          
+   
+	
 }
 @Unroll
 def "savingUser"() {

@@ -1,11 +1,9 @@
-package pastog_
+package pastog
 
 import grails.transaction.Transactional
 
 @Transactional
-class BootstrapService {
-
-
+class QuestionService {
 
     def serviceMethod() {
 

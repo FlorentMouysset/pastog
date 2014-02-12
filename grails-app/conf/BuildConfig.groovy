@@ -5,6 +5,8 @@ grails.project.test.reports.dir = "target/test-reports"
 grails.project.work.dir = "target/work"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
+grails.server.port.http = 8090
+
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 //grails.project.fork = [
@@ -77,7 +79,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2.1"
         compile ':cache:1.1.1'
-        compile ":codenarc:0.19"
+        compile ":codenarc:0.20"
         compile ":spring-security-core:1.2.7.3"
 
         test ":geb:$gebVersion"

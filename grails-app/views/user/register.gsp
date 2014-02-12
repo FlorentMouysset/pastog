@@ -48,7 +48,7 @@
    
       <label>&nbsp;</label>
     <div class="rightcol">
-      <g:submitButton class="button" name="submitButton" value="Create Account" />
+      <g:submitButton class="user" name="save" value="Create Account" />
     </div>
   </fieldset>
 </g:form>

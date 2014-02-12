@@ -2,19 +2,27 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: virtualEventInstance, field: 'eventBase', 'error')} required">
-	<label for="eventBase">
-		<g:message code="virtualEvent.eventBase.label" default="Event Base" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="eventBase" name="eventBase.id" from="${ups.pastog.EventBase.list()}" optionKey="id" required="" value="${virtualEventInstance?.eventBase?.id}" class="many-to-one"/>
+<div class="fieldcontain ${hasErrors(field: 'titre', 'error')} required">
+        <span class="required-indicator">*</span>
+    </label>
+    Titre: <g:textField name = "titre"/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: virtualEventInstance, field: 'questions', 'error')} ">
-	<label for="questions">
-		<g:message code="virtualEvent.questions.label" default="Questions" />
-		
-	</label>
-	<g:select name="questions" from="${ups.pastog.Question.list()}" multiple="multiple" optionKey="id" size="5" value="${virtualEventInstance?.questions*.id}" class="many-to-many"/>
+<div class="fieldcontain ${hasErrors(field: 'description', 'error')} required">
+    <label for="description">
+        <span class="required-indicator">*</span>
+    </label>
+    Description: <g:textField name = "description"/>
+</div>
+<div class="fieldcontain4">
+    <label for="dateOfStart">
+        <span class="required-indicator">*</span>
+    </label>
+    Date of start: <g:datePicker name="dateOfStart" precision="minute"  value="${new Date()}"/>
+</div>
+<div class="fieldcontain3">
+    <label for="dateOfEnd">
+        <span class="required-indicator">*</span>
+    </label>
+    Date of end: <g:datePicker name="dateOfEnd" precision="minute"  value="${new Date()}"/>
 </div>
 

@@ -17,7 +17,7 @@ class DomainSpec extends Specification {
     @Unroll
     def "test DomainTest"() {
         expect:
-        def user = new User(name: "name", secondName: "secondName", email: "email", password: "password", confirmPassword: "confirmPassword")
+        def user = Mock(User)
         def dom = new Domain (title: title, description: description, author: user )
         (dom.save() != null )== valide
 

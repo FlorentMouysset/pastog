@@ -13,6 +13,18 @@
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
+		<div>
+		 <ul class="nav navbar-nav navbar-right"/>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="${createLink(controller: 'Question', action: 'update')}">Update</a></li>
+                        <li class="divider"></li>
+                        <li><a href="${createLink(controller: 'Question', action: 'list', params: [userOnly: 'true'])}">Mes Questions</a>
+                        </li>
+                    </ul>
+                   </li>
+          </div>
 		<div id="Ajouter une nouvelle question" class="content scaffold-create" role="main">
 			<h1><g:message code="Ajouter une nouvelle question" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -26,8 +38,16 @@
 			</ul>
 			</g:hasErrors>
 			<g:form url="[resource:questionInstance, action:'save']" >
-				<fieldset class="form">
-					<g:render template="form"/>
+				<fieldset>
+                        <div class="form-group">
+                            <label for="inputDescription">Enoncé</label>
+                            <textarea id="inputDescription"
+                                      class="form-control"
+                                      rows="3"
+                                      name="description"
+                                      placeholder="Describe the point of your post"
+                                      style="resize: none">${questionInstance?.enunciated}</textarea>
+                        </div>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

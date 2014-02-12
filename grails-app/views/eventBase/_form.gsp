@@ -2,6 +2,14 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'description', 'error')} ">
+	<label for="description">
+		<g:message code="eventBase.description.label" default="Description" />
+		
+	</label>
+	<g:textField name="description" value="${eventBaseInstance?.description}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'dateOfEnd', 'error')} required">
 	<label for="dateOfEnd">
 		<g:message code="eventBase.dateOfEnd.label" default="Date Of End" />
@@ -18,19 +26,19 @@
 	<g:datePicker name="dateOfStart" precision="day"  value="${eventBaseInstance?.dateOfStart}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'description', 'error')} ">
-	<label for="description">
-		<g:message code="eventBase.description.label" default="Description" />
-		
-	</label>
-	<g:textField name="description" value="${eventBaseInstance?.description}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'participants', 'error')} ">
 	<label for="participants">
 		<g:message code="eventBase.participants.label" default="Participants" />
 		
 	</label>
 	<g:select name="participants" from="${ups.pastog.user.User.list()}" multiple="multiple" optionKey="id" size="5" value="${eventBaseInstance?.participants*.id}" class="many-to-many"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: eventBaseInstance, field: 'subdomain', 'error')} required">
+	<label for="subdomain">
+		<g:message code="eventBase.subdomain.label" default="Subdomain" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="subdomain" name="subdomain.id" from="${ups.pastog.SubDomain.list()}" optionKey="id" required="" value="${eventBaseInstance?.subdomain?.id}" class="many-to-one"/>
 </div>
 

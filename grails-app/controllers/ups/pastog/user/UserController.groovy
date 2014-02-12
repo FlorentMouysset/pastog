@@ -110,25 +110,23 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
-	   def register = {
+    def register = {
         // new user posts his registration details
-		   Role role=  new Role(authority: "STUDENT_ROLE")
         if (request.method == 'POST') {
             // create domain object and assign parameters using data binding
             def u = new User(params)
-			 
-             if (! u.save()) {
+            if (! u.save()) {
                 // validation failed, render registration page again
-			   flash.error="user.creation.failed"
+                flash.error="user.creation.failed"
                 return [user:u]
             } else {
+
 	            // validate/save ok, store user in session, redirect to classDomain
 				//UserRole.create(u, role, true)
 				flash.message="user.created"
 	            session.user = u
 	            redirect(controller:'domain')
-				
-            }
+				            }
         } else if (session.user) {
             // don't allow registration while user is logged in
             redirect(controller:'domain')

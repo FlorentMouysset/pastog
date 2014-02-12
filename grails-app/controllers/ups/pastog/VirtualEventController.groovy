@@ -1,6 +1,8 @@
 package ups.pastog
 
-
+import ups.pastog.user.Role
+import ups.pastog.user.User
+import ups.pastog.user.UserRole
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -24,11 +26,25 @@ class VirtualEventController {
     }
 
     @Transactional
-    def save(VirtualEvent virtualEventInstance) {
+    def save() {
+
+        VirtualEvent virtualEventInstance = new VirtualEvent()
+        virtualEventInstance.save()
+
         if (virtualEventInstance == null) {
             notFound()
             return
         }
+
+        def eb = new EventBase(title: params.title, description: params.description, dateOfStart: params.dateOfStart, dateOfEnd: params.dateOfEnd)
+
+        if (!eb.save()) {
+            flash.message = "event base null"
+            render view : 'show'
+        }
+
+        virtualEventInstance.eventBase = EventBase.findById(eb.id)
+        virtualEventInstance.save flush:true
 
         if (virtualEventInstance.hasErrors()) {
             respond virtualEventInstance.errors, view:'create'
@@ -39,11 +55,12 @@ class VirtualEventController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'virtualEventInstance.label', default: 'VirtualEvent'), virtualEventInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'VirtualEvent.label', default: 'VirtualEvent'), virtualEventInstance.id])
                 redirect virtualEventInstance
             }
-            '*' { respond virtualEventInstance, [status: CREATED] }
+            '*'{ respond virtualEventInstance, [status: CREATED] }
         }
+
     }
 
     def edit(VirtualEvent virtualEventInstance) {

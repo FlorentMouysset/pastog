@@ -23,11 +23,14 @@
 			<table>
 			<thead>
 					<tr>
+					
+						<g:sortableColumn property="description" title="${message(code: 'eventBase.description.label', default: 'Description')}" />
+					
 						<g:sortableColumn property="dateOfEnd" title="${message(code: 'eventBase.dateOfEnd.label', default: 'Date Of End')}" />
 					
 						<g:sortableColumn property="dateOfStart" title="${message(code: 'eventBase.dateOfStart.label', default: 'Date Of Start')}" />
 					
-						<g:sortableColumn property="description" title="${message(code: 'eventBase.description.label', default: 'Description')}" />
+						<th><g:message code="eventBase.subdomain.label" default="Subdomain" /></th>
 					
 					</tr>
 				</thead>
@@ -35,11 +38,13 @@
 				<g:each in="${eventBaseInstanceList}" status="i" var="eventBaseInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${eventBaseInstance.id}">${fieldValue(bean: eventBaseInstance, field: "dateOfEnd")}</g:link></td>
+						<td><g:link action="show" id="${eventBaseInstance.id}">${fieldValue(bean: eventBaseInstance, field: "description")}</g:link></td>
+					
+						<td><g:formatDate date="${eventBaseInstance.dateOfEnd}" /></td>
 					
 						<td><g:formatDate date="${eventBaseInstance.dateOfStart}" /></td>
 					
-						<td>${fieldValue(bean: eventBaseInstance, field: "description")}</td>
+						<td>${fieldValue(bean: eventBaseInstance, field: "subdomain")}</td>
 					
 					</tr>
 				</g:each>
@@ -51,4 +56,3 @@
 		</div>
 	</body>
 </html>
-
