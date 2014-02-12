@@ -10,7 +10,7 @@
 	<body>
 		
 		<div class="nav" role="navigation">
-			<ul>
+			<ul><li><a class="La liste des domaines" href="${createLink(uri: '/domain')}"><g:message code="La liste des domaines"/></a></li>
 			   <li><a class="Ajout d'un domaine" href="${createLink(uri: '/domain/create/')}"><g:message code="Ajout d'un domaine"/></a></li>
 			</ul>
 			  <ul class="nav navbar-nav navbar-right">
